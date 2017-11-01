@@ -1,0 +1,89 @@
+
+
+.form-horizontal .control-label {
+  text-align: right;
+  color: #000;
+  font-weight: 300;
+  font-size: 1.05em;
+}
+
+.has-success .help-block, .has-success .control-label {
+  color: #7cb342;
+}
+
+.has-error .help-block, .has-error .control-label {
+  color: #dd191d;
+}
+
+.form-control1, .form-control_2.input-sm{
+  border: 1px solid #e0e0e0;
+  padding: 5px 8px;
+  color: #616161;
+  background: #fff;
+  box-shadow: none !important;
+  width: 100%;
+  font-size: 0.85em;
+  font-weight: 300;
+  height: 40px;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+.form-control1:focus {
+  border: 1px solid #03a9f4;
+  background: #fff;
+  box-shadow: none;
+}
+
+.has-success .form-control1{
+  background-color: #f1f8e9;
+  border-color: #c5e1a5 !important;
+}
+
+.has-error .form-control1{
+  background-color: #fde0dc;
+  border-color: #f69988 !important;
+}
+
+.help-block {
+  color: #999;
+  font-size: 0.85em;
+}
+
+.checkbox-inline1{
+  position: relative;
+  display:block;
+  margin-bottom: 0;
+  font-weight: 400;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.radio label, .checkbox label, label{
+  font-size: 0.85em;
+  font-weight:300;
+  vertical-align: middle;
+}
+
+.radios input[type="radio"] {
+  margin: 4px 0 0 0;
+  vertical-align: top;
+  cursor: pointer;
+  color:#fff;
+}
+
+.txtarea1 {
+  height:150px;
+}
+.txtareaPro{
+  height:60px;
+}
+.col-sm-8 input[type="file"] {
+  margin-top:7px;
+}
+div.well label {
+	font-size:13px;
+	color:#000000;
+}
+
+

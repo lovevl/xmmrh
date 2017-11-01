@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.jeecms.mrh.common.entity" auto-import="true">
+	<class name="MrhStaff" table="mrh_staff" >
+		<id name="id" type="string" column="id">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="title" column="title" type="string" />
+		<property name="queryUrl" column="query_url" type="string" />
+		<property name="queryString" column="query_string" type="string" />
+		<property name="parentTitle" column="parent_title" type="string" />
+		<property name="foreignId" column="foreign_id" type="string" />
+		<property name="type" column="type" type="integer" />
+		<property name="createTime" column="create_time" type="timestamp" />
+		<many-to-one name="user" column="user_id" class="com.jeecms.core.entity.CmsUser" lazy="false" />
+		<many-to-one name="downl" column="downl_id" class="MrhDownload" lazy="false" />
+		<many-to-one name="tutor" column="tutor_id" class="MrhTutorial" lazy="false" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.jeecms.mrh.common.entity" auto-import="true">
+	<class name="MrhDownload" table="mrh_download" >
+		<id name="id" type="string" column="id">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="title" column="title" type="string" />
+		<property name="detail" column="detail" type="string" />
+		<property name="onDiskUrl" column="on_disk_url" type="string" />
+		<property name="password" column="password" type="string" />
+		<property name="type" column="type" type="integer" />
+		<property name="downTimes" column="down_times" type="integer" not-null="true"/>
+		<property name="createTime" column="create_time" type="timestamp" />
+		<property name="imgPath" column="img_path" type="string" />
+		<property name="tags" column="tags" type="string" />
+		<property name="path" column="path" type="string" />
+		<property name="state" column="state" type="java.lang.Boolean" />
+		<property name="none" column="isNone" type="java.lang.Boolean" />
+		<property name="stick" column="stick" type="java.lang.Boolean" />
+		<many-to-one name="purType" column="pur_type" class="MrhPurchaseType" lazy="false" />
+		<many-to-one name="referred" column="referred_id" class="MrhDownload" lazy="false" />
+		<many-to-one name="parent" column="parent_id" class="MrhDownload" lazy="false" />
+		<set name="mrhDownloads">
+			<key column="referred_id"></key>
+			<one-to-many class="MrhDownload"/>
+		</set>
+	</class>
+</hibernate-mapping>

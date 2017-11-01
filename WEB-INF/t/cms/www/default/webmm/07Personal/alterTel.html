@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>个人中心</title>
+    <style type="text/css">
+.body_message .alert {
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.body_message{
+	width:100%;position:fixed;z-index:999;top:150px;
+}
+body .body_message div.alert-message{
+padding:1px auto;
+background-color: rgba(84, 221, 214, 0.88)!important;
+color: #ffffff !important;
+margin:0 auto;text-align:center;
+font-size:12px;
+}
+
+    
+    </style>
+</head>
+
+<body>
+    <!-- <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div> -->
+    <nav role="navigation" class="navbar navbar-static-top">
+       <#include "../personalTemplate/navigation.html"/>
+    </nav>
+    <div id="skin-select">
+		<#include "../personalTemplate/skinSelect.html"/>            
+    </div>
+
+    <div class="wrap-fluid">
+        <div class="container-fluid paper-wrap bevel tlbr">
+            <div class="row">
+                <div id="paper-top">
+                    <div class="col-sm-3">
+                        <h2 class="tittle-content-header">
+                            <i class="icon-view-list"></i> 
+                            <span>修改登录账号
+                            </span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="content-wrap">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="nest" id="tabletreeClose">
+                        <!--  table-striped   --> 
+			<div class="body-nest" style="margin-top:30px;">
+                 <div class="form_center">
+                 <form class="form-horizontal" action="${base}/own/saveTel.json" onsubmit="return submitForm();">
+				<div class="form-group">
+					<label for="focusedinput" class="col-sm-2 control-label">输入原邮箱：</label>
+					<div class="col-sm-8">
+						<input type="text" name="oriUsername" class="form-control1"  >
+					</div>
+				 </div>
+                 <div class="form-group">
+					<label for="focusedinput" class="col-sm-2 control-label">输入新邮箱：</label>
+					<div class="col-sm-8">
+						<input type="text" name="username" class="form-control1"  >
+					</div>
+				 </div>
+				 <div class="form-group">
+					<label for="focusedinput" class="col-sm-2 control-label">验证码：</label>
+					<div class="col-sm-8">
+						<input type="text" name="emailValidateCode" class="form-control1" style="width:40%;">
+						<button type="button" class="btn btn-primary" onclick="sendCode(this);">发送验证码</button>
+						<label for="emailValidateCode" generated="true" class="error-icon" style="display:none;">请输入正确的4位验证码！</label>
+					</div>
+				 </div>
+				 <div class="form-actions" style="margin:20px 0 0 0;">
+                    <button type="submit" class="btn btn-primary">提交</button>
+                    <button type="button" class="btn" onclick="cancelChange();">取消</button>
+                    <span style="float:right;margin:20px 135px 0 0;font-size:10px;">还需要其他更多信息吗？
+                    <a href="${base}/own/advice.jspx">告诉我们</a></span>
+                 </div>
+                 </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<#include "../personalTemplate/footer.html"/>
+
+</div>
+</div>
+<script>
+$(function(){
+	var $theme = $("ul.dropdown-menu div");
+	var theme = ${(theme)!};
+	$theme.eq(theme).click();
+	o = {
+		$form : $("form.form-horizontal")
+	}
+	o.$form.find("input[name=oriUsername]").attr("vld", "{required:true,email:true}");
+	o.$form.find("input[name=username]").attr("vld", "{required:true,email:true,remote:'${base}/username_unique.jspx',messages:{remote:'用户名已存在'}}");
+	o.$form.find("input[name=emailValidateCode]").attr("vld", "{validateCode:true}");
+	o.$form.validate();
+});
+	
+	submitForm = function(){
+		$.ajax({
+			url : o.$form[0].action,
+			type : 'post',
+			data : o.$form.serialize(),
+			success : function(data){
+				if(data.result == true){
+					alert("修改成功，请用新邮箱重新登录");
+					window._logout("/login.jspx");
+				}else{
+					alert(data.message);
+				}
+			}
+		});
+		return false;
+	}
+	
+	sendCode = function(obj){
+		if(window.sendEmailCode(o.$form.find("input[name=username]").val())){
+			window.time(120,$(obj),"sendCode(this);");
+		}
+	}
+
+</script>
+
+
+</body>
+
+</html>

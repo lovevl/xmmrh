@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+ <!-- Bootstrap Core CSS -->
+<link href="${base}/mrhweb/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="${base}/mrhweb/css/LoginRes.css" rel='stylesheet' type='text/css' />
+<title>注册</title>
+<link rel="shortcut icon" href="${base}/mrhweb/css/assets/ico/minus.png">
+</head>
+<body id="login">
+  <div class="login-logo">
+    <div class="pro-name"><a href="${base}">XM<span class="name-dot">.</span>MRH</a></div>
+  </div>
+  <h2 class="form-heading">注册新用户</h2>
+  <form class="form-signin app-cam" method="post" onsubmit="return submitForm(this);">
+      <p>填写验证信息:</p>
+    <!--   <input type="text" class="form-control1" placeholder="Full Name" autofocus="">
+      <input type="text" class="form-control1" placeholder="Address" autofocus=""> -->
+      <input type="text" class="form-control1" name="username" placeholder="手机号码" autofocus="">
+      <div><input type="text" class="form-control1 emailCode" name="emailValidateCode" placeholder="验证码" autofocus="">
+      <button class="btn btn-lg btn-sendCode" type="button" onclick="sendCode(this);">发送验证码</button></div>
+      <label for="emailValidateCode" class="error-icon errorCode" style="display:none">请输入正确的4位验证码！</label>
+      <input type="password" class="form-control1 password" id="password" name="loginPassword" placeholder="密码">
+      <input type="password" class="form-control1 checkpwd" placeholder="确认密码">
+	  <p class="um">用户名用于站内显示:</p>
+      <input type="text" class="form-control1" name="realname" placeholder="用户名（必填）" autofocus="">
+      <div><label class="checkbox-custom check-success">
+          <input type="checkbox" name="checkbox" checked=""> <label for="checkbox1">我同意本站内的服务与条款</label>
+      </label></div>
+      <button class="btn btn-lg btn-success1 btn-block" type="submit">注册</button>
+      <div class="registration">
+          已注册？
+          <a class="" href="${base}/login.jspx">
+              点击登陆
+          </a>
+      </div>
+  </form>
+   <div class="copy_layout login register">
+      <p>Copyright &copy; 2017 91xue.me All rights reserved. Collect from <a href="http://www.91xue.me/" title="网页模板" target="_blank">就要学</a></p>
+   </div>
+<script type="text/javascript">
+	$(function(){
+		var $form = $("form");
+		$form.find("input[name=username]").attr("vld", "{required:true,phone:true,remote:'${base}/username_unique.jspx',messages:{remote:'用户名已存在'}}");
+		$form.find("input[name=emailValidateCode]").attr("vld", "{validateCode:true}");
+		$form.find("input[name=realname]").attr("vld", "{required:true,username:true,minlength:[3]}");
+		$form.find(".password").attr("vld", "{required:true,rangelength:[6,12]}");
+		$form.find(".checkpwd").attr("vld", "{required:true}").attr("equalto", "#password");
+		$form.validate();
+	});
+	
+	window.doSubmitSuccess = function(data) {
+		alert("注册成功！");
+		if (data.result == true) {
+			var form = $("form")[0];
+			form.action = window._BasePath + "/login.jspx";
+			$("form input[name=loginPassword]").attr("name", "password");
+			ajaxSubmitForm(form, window.loginSuccess);
+		}
+	}
+	
+	submitForm = function(form){
+		if($(form).find("input[type=checkbox]")[0].checked){
+			form.action="${base}/register.jspx" ;
+			ajaxSubmitForm(form, window.doSubmitSuccess);
+		}else{
+			alert('请点击同意我们的站内条款与服务');
+		}
+		return false;
+	}
+	
+	sendCode = function(obj){
+		var $username = $("form input[name='username']");
+		if(window.sendEmailCode($username.val(),$(obj))){
+			window.time(120,$(obj),"sendCode(this);");
+		}
+	}
+	
+	
+</script>   
+   
+   
+</body>
+</html>

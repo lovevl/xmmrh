@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.jeecms.mrh.common.entity" auto-import="true">
+	<class name="MrhOrder" table="mrh_order" >
+		<id name="id" type="string" column="id">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="orderNo" column="order_no" type="string" />
+		<property name="name" column="name" type="string" />
+		<property name="body" column="body" type="string" />
+		<property name="createTime" column="create_time" type="timestamp" />
+		<property name="payTime" column="pay_time" type="timestamp" />
+		<property name="buyerName" column="buyer_name" type="string" />
+		<property name="payMoney" column="pay_money" type="java.math.BigDecimal" />
+		<property name="payNo" column="pay_no" type="string" />
+		<property name="payStatus" column="pay_status" type="boolean" />
+		<property name="purchaseTypes" column="purchase_types" type="string" />
+		<many-to-one name="user" column="user_id" class="com.jeecms.core.entity.CmsUser" lazy="false" />
+		<many-to-one name="priceDetail" column="price_detail_id" class="MrhPriceDetail" lazy="false" />
+	</class>
+</hibernate-mapping>

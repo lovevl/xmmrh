@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>个人中心</title>
+</head>
+
+<body>
+    <!-- <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div> -->
+    <nav role="navigation" class="navbar navbar-static-top">
+       <#include "../personalTemplate/navigation.html"/>
+    </nav>
+    <div id="skin-select">
+		<#include "../personalTemplate/skinSelect.html"/>            
+    </div>
+
+    <div class="wrap-fluid">
+        <div class="container-fluid paper-wrap bevel tlbr">
+            <div class="row">
+                <div id="paper-top">
+                    <div class="col-sm-3">
+                        <h2 class="tittle-content-header">
+                            <i class="icon-view-list"></i> 
+                            <span>修改密码
+                            </span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="content-wrap">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="nest" id="tabletreeClose">
+                        <!--  table-striped   --> 
+			<div class="body-nest" style="margin-top:30px;">
+                 <div class="form_center">
+                 <form class="form-horizontal" action="${base}/own/savePwd.json"  method="post" onsubmit="return submitForm(this);">
+                 <div class="form-group">
+					<label for="focusedinput" class="col-sm-2 control-label">登录账号：</label>
+					<div class="col-sm-8">
+						<input type="text" name="username" class="form-control1" placeholder="你的邮箱">
+					</div>
+				 </div>
+				 <div class="form-group">
+					<label for="focusedinput" class="col-sm-2 control-label">原密码：</label>
+					<div class="col-sm-8">
+						<input type="password" name="password" class="form-control1">
+					</div>
+				 </div>
+				 <div class="form-group">
+					<label for="focusedinput" class="col-sm-2 control-label">新密码：</label>
+					<div class="col-sm-8">
+						<input type="password" name="newPwd" class="form-control1" >
+					</div>
+				 </div>
+				 <div class="form-group">
+					<label for="focusedinput" class="col-sm-2 control-label">确认新密码：</label>
+					<div class="col-sm-8">
+						<input type="password" name="confirmPwd" class="form-control1" >
+					</div>
+				 </div>
+				 <div class="form-actions" style="margin:20px 0 0 0;">
+                    <button type="submit" class="btn btn-primary">确认修改</button>
+                    <button type="reset" class="btn" onclick="cancelChange()">重置</button>
+                    <span style="float:right;margin:20px 135px 0 0;font-size:10px;">还需要其他更多信息吗？
+                    <a href="${base}/own/advice.jspx">告诉我们</a></span>
+                 </div>
+                 </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<#include "../personalTemplate/footer.html"/>
+
+</div>
+</div>
+<script>
+$(function(){
+	var $theme = $("ul.dropdown-menu div");
+	var theme = ${(theme)!};
+	$theme.eq(theme).click();
+	o = {
+		$form : $("form.form-horizontal")
+	}
+	o.$form.find("input[name=username]").attr("vld", "{required:true,email:true}");
+	o.$form.find("input[name=password]").attr("vld", "{required:true,rangelength:[6,12]}");
+	o.$form.find("input[name=newPwd]").attr("vld", "{required:true,rangelength:[6,12]}");
+	o.$form.find("input[name=confirmPwd]").attr("vld", "{required:true}").attr("equalto", "input[name=newPwd]");
+	o.$form.validate();
+});
+	
+	submitForm = function(form){
+		$.ajax({
+			url : o.$form[0].action,
+			type : 'post',
+			data : o.$form.serialize(),
+			success : function(data){
+				if(data.result == true){
+					alert("密码修改成功，请用新密码重新登录");
+					window._logout("/login.jspx");
+				}else{
+					alert(data.message);
+				}	
+			}
+		});
+		return false;
+	}
+	
+	cancelChange  = function(){
+		o.$form.find(".form-group .col-sm-8 label").hide();
+	}
+
+</script>
+
+
+</body>
+
+</html>

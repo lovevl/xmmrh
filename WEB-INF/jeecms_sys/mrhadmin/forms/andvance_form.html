@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>新增一个</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/jquery.js"></script>
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/css/style.css">
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/css/loader-style.css">
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/css/bootstrap.css">
+    <link href="${base}/mrhweb/css/assets/js/colorPicker/bootstrap-colorpicker.css" rel="stylesheet">
+    <link href="${base}/mrhweb/css/assets/js/validate/validate.css" rel="stylesheet">
+    <link href="${base}/mrhweb/css/assets/js/idealform/css/jquery.idealforms.css" rel="stylesheet">
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/js/timepicker/bootstrap-timepicker.css">
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/js/datepicker/datepicker.css">
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/js/datepicker/clockface.css">
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/js/datepicker/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" type="text/css" href="${base}/mrhweb/css/assets/js/tag/jquery.tagsinput.css">
+
+	 <!-- Bootstrap Core CSS -->
+	<!-- Custom CSS -->
+	<link href="${base}/mrhweb/css/formStyle.css" rel='stylesheet' type='text/css' />
+	<!-- <link href="${base}/mrhweb/css/bak/css/custom.css" rel="stylesheet"> -->
+
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="${base}/mrhweb/css/assets/ico/minus.png">
+</head>
+
+<body><div id="awwwards" class="right black"><a href="http://www.awwwards.com/best-websites/apricot-navigation-admin-dashboard-template" target="_blank">best websites of the world</a></div>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <!-- TOP NAVBAR -->
+    <nav role="navigation" class="navbar navbar-static-top">
+        <#include "../templateView/navigation.html"/>
+    </nav>
+
+    <!-- /END OF TOP NAVBAR -->
+
+    <!-- SIDE MENU -->
+    <div id="skin-select">
+        <#include "../templateView/skinSelect.html"/>
+    </div>
+    <!-- END OF SIDE MENU -->
+
+
+
+    <!--  PAPER WRAP -->
+    <div class="wrap-fluid">
+        <div class="container-fluid paper-wrap bevel tlbr">
+
+            <!-- CONTENT -->
+            <!--TITLE -->
+            <div class="row">
+                <div id="paper-top">
+                    <div class="col-sm-3">
+                        <h2 class="tittle-content-header">
+                            <i class="icon-map"></i> 
+                            <span>添加一个新下载
+                            </span>
+                        </h2>
+
+                    </div>
+<!--  
+                    <div class="col-sm-7">
+                        <div class="devider-vertical visible-lg"></div>
+                        <div class="tittle-middle-header">
+                            <div class="alert">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <span class="tittle-alert entypo-info-circled"></span>
+                                Welcome back,&nbsp;
+                                <strong>Dave mattew!</strong>&nbsp;&nbsp;Your last sig in at Yesterday, 16:54 PM
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                    <div class="col-sm-2">
+                        <div class="devider-vertical visible-lg"></div>
+                        <div class="btn-group btn-wigdet pull-right visible-lg">
+                            <div class="btn">
+                                Widget</div>
+                            <button data-toggle="dropdown" class="btn dropdown-toggle" type="button">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul role="menu" class="dropdown-menu">
+                                <li>
+                                    <a href="#">
+                                        <span class="entypo-plus-circled margin-iconic"></span>Add New</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="entypo-heart margin-iconic"></span>Favorite</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="entypo-cog margin-iconic"></span>Setting</a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <!--/ TITLE -->
+
+            <!-- BREADCRUMB -->
+            <ul id="breadcrumb">
+                <li>
+                    <span class="entypo-home"></span>
+                </li>
+                <li><i class="fa fa-lg fa-angle-right"></i>
+                </li>
+                <li><a href="#" title="Sample page 1">表单</a>
+                </li>
+                <li><i class="fa fa-lg fa-angle-right"></i>
+                </li>
+                <li><a href="#" title="Sample page 1">新增一个下载</a>
+                </li>
+                <li class="pull-right">
+                    <div class="input-group input-widget">
+                        <input style="border-radius:15px" type="text" placeholder="搜索..." class="form-control">
+                    </div>
+                </li>
+            </ul>
+
+            <!-- END OF BREADCRUMB -->
+
+		 <div class="content-wrap">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="nest" id="validationClose">
+                            <div class="title-alt">
+                                <h6>
+                                    新增</h6>
+                              
+                            </div>
+                            <div class="body-nest" id="validation">
+                                <div class="form_center">
+
+           <!--            <div class="tab-content">
+						<div class="tab-pane active" id="horizontal-form">  --> 
+							<form class="form-horizontal" action="${base}/governor/dowload/testSave.do" method="post" enctype="multipart/form-data">  
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">标题：</label>
+									<div class="col-sm-8">
+										<input type="text" name="title"  class="form-control1" id="focusedinput" placeholder="标题用于展示">
+									</div>
+									<div class="col-sm-2" style="display:none">
+										<p class="help-block">提示信息</p>
+									</div>
+								</div>
+						<!--  密码框。。。备用	
+								<div class="form-group">
+									<label for="inputPassword" class="col-sm-2 control-label">Password</label>
+									<div class="col-sm-8">
+										<input type="password" class="form-control1" id="inputPassword" placeholder="Password">
+									</div>
+								</div>
+						-->	
+								<div class="form-group">
+									<label for="checkbox" class="col-sm-2 control-label">备用多选(未用)</label>
+									<div class="col-sm-8 ">
+										<div class="checkbox-inline"><label><input type="checkbox"> Unchecked</label></div>
+										<div class="checkbox-inline"><label><input type="checkbox" checked=""> Checked</label></div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">url路径：</label>
+									<div class="col-sm-8">
+										<input type="text" name="onDiskUrl"  class="form-control1" id="focusedinput" placeholder="百度网盘/360网盘...">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">对应密码：</label>
+									<div class="col-sm-8">
+										<input type="text" name="password"  class="form-control1" id="focusedinput" placeholder="分享链接的密码...">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="selector1" class="col-sm-2 control-label">类型：</label>
+									<div class="col-sm-8"><select name="selector1" id="selector1" class="form-control1">
+										<option value="1">文件夹</option>
+									</select></div>
+								</div>
+								<div class="form-group">
+									<label for="selector1" class="col-sm-2 control-label">父类路径：</label>
+									<div class="col-sm-8"><select name="selector1" id="selector1" class="form-control1">
+										<option value="-1">无</option>
+									</select></div>
+								</div>
+								<div class="form-group">
+									 <label for="selector1" class="col-sm-2 control-label">搜索标题：</label>
+									 <div class="col-sm-8 ">
+					                    <input style="border-radius: 15px;" type="text" placeholder="引用的实体类标题" class="form-control">
+					                 </div>
+								</div>
+								<div class="form-group">
+									<label for="selector1" class="col-sm-2 control-label">引用对象：</label>
+									<div class="col-sm-8"><select name="selector1" id="selector1" class="form-control1">
+										<option value="-1">无</option>
+									</select></div>
+								</div>
+								<div class="form-group">
+									<label for="txtarea1" class="col-sm-2 control-label">详情描述：</label>
+									<div class="col-sm-8"><textarea name="detail" id="txtarea1" cols="50" rows="4" class="form-control1 txtarea1"></textarea></div>
+								</div>
+								<div class="form-group">
+									<label for="radio" class="col-sm-2 control-label">状态：</label>
+									<div class="col-sm-8">
+										<div class="radio-inline"><label><input type="radio" name="state"> 有效</label></div>
+										<div class="radio-inline"><label><input type="radio" name="state" checked=""> 无效</label></div>
+									</div>
+								</div>
+								<div class="form-group">
+							        <label for="exampleInputFile" class="col-sm-2 control-label">图片:</label>
+							        <div class="col-sm-8">
+								        <input type="file" name="file">
+								        <div><img style="width:200px;height:109px;" src="${base}/file/preview.jspx?fileName=${(downl.imgPath)!}" id="imgFileId"/></div>
+							        </div>
+						      	</div>
+								
+								<div class="well">
+                                        <label>对应标签:(可用于相关展示)</label>
+                                        <input id="tags_1" type="hidden" class="form-control tags" >
+                                </div>
+								
+								
+								<div class="form-actions" style="margin:20px 0 0 0;">
+                                       <button type="submit" class="btn btn-primary">提交</button>
+                                       <button type="reset" class="btn">取消</button>
+                                </div>
+							</form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- FOOTER -->
+            <div class="footer-space"></div>
+            <div id="footer">
+                <div class="devider-footer-left"></div>
+                <div class="time">
+                    <p id="spanDate">
+                    <p id="clock">
+                </div>
+                <div class="copyright">Make with Love
+                    <span class="entypo-heart"></span>Collect from <a href="http://www.cssmoban.com/" title="学习教程" target="_blank">学习教程</a> All Rights Reserved</div>
+                <div class="devider-footer"></div>
+
+            </div>
+            <!-- / END OF FOOTER -->
+
+
+        </div>
+    </div>
+
+    <!-- MAIN EFFECT -->
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/preloader.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/app.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/load.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/main.js"></script>
+
+    <!-- /MAIN EFFECT -->
+
+<!--    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/colorPicker/bootstrap-colorpicker.min.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/inputMask/jquery.maskedinput.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/switch/bootstrap-switch.js"></script>
+     <script type="text/javascript" src="${base}/mrhweb/css/assets/js/validate/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/idealform/jquery.idealforms.js"></script>
+
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/timepicker/bootstrap-timepicker.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/datepicker/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/datepicker/clockface.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/datepicker/bootstrap-datetimepicker.js"></script>
+ -->
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/tag/jquery.tagsinput.js"></script>
+
+    <script type="text/javascript">
+    
+/*    时间日期控件
+	 $('#datetimepicker1').datetimepicker({
+        language: 'pt-BR'
+    });
+    $('#dp1').datepicker()
+    $('#dpYears').datepicker();
+    $('#timepicker1').timepicker();
+    $('#t1').clockface();
+    $('#t2').clockface({
+        format: 'HH:mm',
+        trigger: 'manual'
+    });
+
+    $('#toggle-btn').click(function(e) {
+        e.stopPropagation();
+        $('#t2').clockface('toggle');
+    }); */
+    </script>
+    <script>
+/*    
+	//表单验证控件
+	 $(document).ready(function() {
+        //Validation
+        $('#contact-form').validate({
+            rules: {
+                name: {
+                    minlength: 2,
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                subject: {
+                    minlength: 2,
+                    required: true
+                },
+                message: {
+                    minlength: 2,
+                    required: true
+                }
+            },
+            highlight: function(element) {
+                $(element).closest('.control-group').removeClass('success').addClass('error');
+            },
+            success: function(element) {
+                element
+                    .text('OK!').addClass('valid')
+                    .closest('.control-group').removeClass('error').addClass('success');
+            }
+        });
+
+        // MASKED INPUT
+
+        $("#date").mask("99/99/9999", {
+            completed: function() {
+                alert("Your birthday was: " + this.val());
+            }
+        });
+        $("#phone").mask("(999) 999-9999");
+
+        $("#money").mask("99.999.9999", {
+            placeholder: "*"
+        });
+        $("#ssn").mask("99--AAA--9999", {
+            placeholder: "*"
+        });
+
+
+        //COLOR PICKER
+        window.prettyPrint && prettyPrint();
+
+        // Code for those demos
+        var _createColorpickers = function() {
+            $('#cp1').colorpicker({
+                format: 'hex'
+            });
+            $('#cp2').colorpicker();
+            $('#cp3').colorpicker();
+            var bodyStyle = $('body')[0].style;
+            $('#cp4').colorpicker().on('changeColor', function(ev) {
+                bodyStyle.backgroundColor = ev.color.toHex();
+            });
+        }
+
+        _createColorpickers();
+
+        $('.bscp-destroy').click(function(e) {
+            e.preventDefault();
+            $('.bscp').colorpicker('destroy');
+        });
+
+        $('.bscp-create').click(function(e) {
+            e.preventDefault();
+            _createColorpickers();
+        });
+
+
+    }); */
+    </script>
+
+    <script type="text/javascript">
+    function onAddTag(tag) {
+        alert("Added a tag: " + tag);
+    }
+
+    function onRemoveTag(tag) {
+        alert("Removed a tag: " + tag);
+    }
+
+    function onChangeTag(input, tag) {
+        alert("Changed a tag: " + tag);
+    }
+
+    $(function() {
+
+        $('#tags_1').tagsInput({
+            width: 'auto'
+        });
+       /*  $('#tags_2').tagsInput({
+            width: 'auto',
+            onChange: function(elem, elem_tags) {
+                var languages = ['php', 'ruby', 'javascript'];
+                $('.tag', elem_tags).each(function() {
+                    if ($(this).text().search(new RegExp('//b(' + languages.join('|') + ')//b')) >= 0)
+                        $(this).css('background-color', '#FBB44C');
+                });
+            }
+        });
+        $('#tags_3').tagsInput({
+            width: 'auto',
+
+            //autocomplete_url:'test/fake_plaintext_endpoint.html' //jquery.autocomplete (not jquery ui)
+            autocomplete_url: 'test/fake_json_endpoint.html' // jquery ui autocomplete requires a json endpoint
+        }); */
+
+
+        // Uncomment this line to see the callback functions in action
+        //          $('input.tags').tagsInput({onAddTag:onAddTag,onRemoveTag:onRemoveTag,onChange: onChangeTag});       
+
+        // Uncomment this line to see an input with no interface for adding new tags.
+        //          $('input.tags').tagsInput({interactive:false});
+    });
+    </script>
+
+</body>
+
+</html>

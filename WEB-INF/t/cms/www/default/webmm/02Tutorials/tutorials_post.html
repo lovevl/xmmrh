@@ -1,0 +1,234 @@
+
+<!DOCTYPE html> 
+<html>
+<head>
+<title>${(tutor.title)!}详情</title>
+<!-- <script type="text/javascript" src="${base}/mrhweb/js/commonJs/jquery.media.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('a.media').media({width:700,height:600});
+	});
+</script> -->
+<!-- SLIDER_NIVO --> 
+<script type="text/javascript" src="${base}/mrhweb/js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript">
+    $(window).load(function() {
+        $('.nivo_slider').nivoSlider({
+			manualAdvance: true,
+			directionNavHide:true});
+    });
+</script>
+<style type="text/css">
+.badge {
+display: inline-block;
+min-width: 10px;
+padding: 2px 6px;
+font-size: 12px;
+font-weight: bold;
+line-height: 1;
+color: #fff;
+text-align: center;
+white-space: nowrap;
+vertical-align: baseline;
+background-color: #777;
+border-radius: 10px;
+}
+.badge-folder{
+	background-color: #ffc107;
+}
+.badge-file{
+	background-color: #03a9f4;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- BEGIN menu -->
+<header class="header_silverbackground">
+	<#include "/WEB-INF/t/cms/www/default/webmm/templateView/headerView.html"/>
+</header>
+<!-- /END menu -->
+
+<!-- BEGIN middle part -->
+<section id="content">
+<div class="href_path_link"><h6>你所在位置: <a href="${base}/fromWeb/tutorials.jspx">教程学习</a>
+	<#if pTitleList??><#list pTitleList as p>
+		><a href="${base}/fromWeb/tutorials.jspx?id=${p.id}"><#if p.title?length gt 8>${p.title?substring(0,8)}...<#else>${p.title}</#if></a>
+	</#list></#if>
+</div>
+<div class="href_path_about"><h2>《${tutor.title}》</h2>
+<img class="" src="${base}/mrhweb/images/end-logo.png" alt="end-logo" /></div>
+	
+	
+<!-- BEGIN blog left -->
+<div class="blog_left">
+
+
+<div class="blog_left_content">
+<div class="blog_content_info tutor_de_info">
+	<div><span style="line-height:1.80;">右图中的封面和目录全部是由程序自动获取pdf的前四张。故有些图片可能稍大，等待较久，有些图片可能比较模糊。建议用户自行下载下来</span></div>
+	<#if tutor.password??>
+	<div class="panel panel-success">
+		<div class="panel-heading">
+			<h6 class="smart-margin-off">网盘密码：</h6>
+		</div>
+		<div class="panel-body"><span>${(tutor.password)!}</span><a class="copyPwd" href="#" onclick="window.copyPwd(this);return false;">点击复制</a></div>
+	</div>
+	<div><button type="button" class="btn btn-download" onclick="window.open('${base}/fromWeb/redirectBaiD.jspx?url=${tutor.onDiskUrl}&id=${tutor.id}')"><i class="icon icon-download"></i> 点击下载</button></div>
+	<#else>
+	<div class="panel panel-success">
+		<div class="panel-heading">
+			<h6 class="smart-margin-off">网盘密码：</h6>
+		</div>
+		<div class="panel-body"><span style="font-size:12px;">此项包含<span class="badge badge-folder">${tutor.purType.allFolder}</span>个文件夹，<span class="badge badge-file">${tutor.purType.allFile}</span>个文件，需要开启一键下载</span></div>
+	</div>
+	<div><button type="button" class="btn btn-download" onclick="window.location.href='${base}/fromWeb/redirectBaiD.jspx?id=${tutor.id}';"><i class="icon icon-lock-open"></i> 点此开启</button></div>
+	
+	</#if>
+</div>
+<div class="blog_content_inner tutor_de_inner">
+	<div class="theme-default">
+		<div class="blog_content_slider nivo_slider">
+			<#if tutor.imgs?size gt 0><#list tutor.imgs as imgs>
+				<img src="/static/${imgs.filePath}"  alt="目录${imgs_index+1}"/>
+			</#list>
+			<#else>
+				<img src="${base}/mrhweb/test/0.png" />
+				<img src="${base}/mrhweb/test/1.png" />
+				<img src="${base}/mrhweb/test/2.png" />
+			</#if>
+			<!-- <img src="${base}/mrhweb/images/blog/2.jpg" alt="" />
+			<img src="${base}/mrhweb/images/blog/5.jpg" alt="" />
+			<img src="${base}/mrhweb/images/blog/4.jpg" alt="" /> -->
+		</div>
+	</div>
+<!-- <h3>详情（或目录）</h3>
+<p>${(tutor.detail)}</p> -->
+
+<!--用p标签可以间隔分段 <p></p><p></p> -->
+		
+<div class="clear"></div>
+</div>
+<div class="clear"></div>
+</div>
+
+<h3 class="padd-bott15">推荐下载</h3>
+
+ <#if stickList??><#list stickList as skl>      
+<#if skl_index lt 3>
+<div <#if skl_index == 0>class="bott_post bott_post_first"<#else>class="bott_post" </#if>>
+<img src="/static/${skl.imgPath}" alt="${skl.title}" />
+<p>
+<b class="bColor">${skl.title}</b>
+<br/><span style="font-size:11px;">${skl.purType.name}</span>
+</p>
+<a class="btn a_btn" <#if skl.type==1>href="${base}/fromWeb/tutorials.jspx?id=${skl.id}"<#else>
+href="${base}/fromWeb/tutorials_post.jspx?id=${skl.id}"</#if>>查看详情</a>
+<div class="clear"></div>
+</div>
+
+</#if></#list></#if>
+
+</div>
+<!-- /END blog left -->
+
+
+
+<!-- BEGIN blog right -->
+<div class="blog_right">
+    
+<div class="widget widget-tabs-wrapper tabs">
+           
+	<ul class="widgetTabs tabs-nav">
+		<li class="popular"><a href="#tab-pop">收藏最多</a></li>
+		<li class="comments"><a href="#tab-comm">最近更新</a></li>
+	</ul>
+            
+	<div class="clear"></div>
+            
+	<div class="widget-tabs-inside tabs-container">
+                        
+		<ul id="tab-pop" class="widget_recent_posts tab-content">            
+            <#if staffList??><#list staffList as sfl>
+       		<#if sfl_index lt 7>
+             <li class="tumbnail_post">
+				<a class="post_name" href="${base}${sfl[1]}${sfl[2]}">${sfl[0]}<br/>
+				<span style="font-size:10px;line-height:10px;">${sfl[4]}</span></a>
+			</li>  </#if>
+	 		</#list></#if>
+		</ul>
+            
+		<ul id="tab-comm" class="widget_recent_posts tab-content">
+			<#if newList??><#list newList as nl>
+			<#if nl_index lt 7>
+			<li class="tumbnail_post">
+				<a class="post_name" 
+				href="${base}/fromWeb/tutorials_post.jspx?id=${nl.id}">${nl.title}
+				<!-- <br/><span style="font-size:10px;line-height:10px;">${nl.purType.name}</span> -->
+				</a>
+			</li>  
+			</#if></#list></#if> 
+			      
+		</ul>	
+                    
+	</div><!-- /.boxes -->
+			
+</div><!-- /widgetTabs -->
+
+
+<!--widgetPages
+<div class="widget widget_pages">
+	<h5 class="widget-title">Pages</h5>		
+	<ul>
+		<li class="page_item"><a href="${base}/i/index.jspx">Home</a></li>
+		<li class="page_item"><a href="${base}/fromWeb/tutorials.jspx">Blog</a></li>
+		<li class="page_item"><a href="${base}/waycd/downloadTypes.jspx">Services</a></li>
+		<li class="page_item"><a href="${base}/about/contact.jspx">Contact</a></li>
+	</ul>
+</div>
+<!--/widgetPages-->
+
+
+
+
+<!--widgetText-->  	 
+<div class="widget widget_text">
+	<h5 class="widget-title">说明简介</h5>
+	<div class="textwidget">
+		说明简介，测试广告。标题。内容。待上线
+	</div>
+</div>
+<!--/widgetText-->
+
+
+
+
+
+
+
+
+					
+<div class="clear"></div>
+</div><!-- /END blog right -->
+
+
+<div class="clear_both"></div>
+<!-- /END blog container -->
+   
+</section>
+<!-- /END middle part -->
+<div class="clear"></div>
+
+
+<!-- BEGIN footer -->
+<footer id="footer"> 
+<#include "/WEB-INF/t/cms/www/default/webmm/templateView/footerView.html"/>
+</footer>
+
+<!-- /END footer -->
+
+</body>
+</html>

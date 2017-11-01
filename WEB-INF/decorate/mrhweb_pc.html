@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="${base}/mrhweb/css/style.css" rel="stylesheet" type="text/css" />
+<link href="${base}/mrhweb/css/menu.css" rel="stylesheet" type="text/css" />
+<link href="${base}/mrhweb/css/slider.css" rel="stylesheet" type="text/css" />
+<link href="${base}/mrhweb/css/css_slider1/default.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="${base}/mrhweb/css/css_slider1/nivo-slider.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="${base}/mrhweb/css/hover.css" rel="stylesheet" type="text/css" />
+<link href="${base}/mrhweb/css/columns.css" rel="stylesheet" type="text/css" />
+<link href="${base}/mrhweb/css/hover_image.css" rel="stylesheet" type="text/css" />
+<link href="${base}/mrhweb/css/lightbox.css" rel="stylesheet" type="text/css" />
+<link href="${base}/mrhweb/css/buttons.css" rel="stylesheet" type="text/css" />
+<link href="${base}/mrhweb/css/widgets.css" rel="stylesheet" type="text/css" />
+<link href="${base}/mrhweb/css/light.css" rel="stylesheet" type="text/css" />
+<link href="${base}/mrhweb/css/assets/css/dripicon.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="${base}/mrhweb/css/stimenu.css" />
+<link rel="stylesheet" type="text/css" href="${base}/mrhweb/css/responsive.css" />
+<!--[endif]-->
+<script type="text/javascript" src="${base}/mrhweb/js/ie.html5.js"></script>
+<!-- JQUERY -->
+<script type="text/javascript" src="${base}/mrhweb/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="${base}/mrhweb/js/jquery.easing.1.3.js"></script>
+<!-- JQUERY_UI 
+
+<script type="text/javascript" src="${base}/mrhweb/js/jquery.ui.core.js"></script>
+-->
+<script type="text/javascript" src="${base}/mrhweb/js/commonJs/dict.js"></script>
+<script type="text/javascript" src="${base}/mrhweb/js/commonJs/mrh.js"></script>
+<script type="text/javascript" src="${base}/mrhweb/js/commonJs/head.js"></script>
+<script type="text/javascript" src="${base}/mrhweb/js/commonJs/centerLoader/js/center-loader.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript">
+    $(window).load(function() {
+    	o = {
+    		$ul : $("ul.blockeasing")
+    	}
+    	var url = window.location.pathname;
+    	if(url.search(/index/) >= 0){
+    		o.$ul.children("li").eq(0).addClass("current").siblings().removeClass("current");
+    	}else if(url.search(/tutorials/) >= 0){
+    		o.$ul.children("li").eq(1).addClass("current").siblings().removeClass("current");
+    	}else if(url.search(/download/) >= 0){
+    		o.$ul.children("li").eq(2).addClass("current").siblings().removeClass("current");
+    	}else if(url.search(/purch/) >= 0){
+    		o.$ul.children("li").eq(3).addClass("current").siblings().removeClass("current");
+    	}
+    });
+</script>
+
+<script type="text/javascript" src="${base}/mrhweb/js/menu.js"></script> 	
+<!-- HOVER_BUTTON -->
+<script type="text/javascript" src="${base}/mrhweb/js/hover.js"></script>
+<script type="text/javascript" src="${base}/mrhweb/js/buttons.js"></script>
+<!-- IMAGE -->
+<script src="${base}/mrhweb/js/image.js" type="text/javascript"> </script>
+<script src="${base}/mrhweb/js/lightbox.js" type="text/javascript"></script>
+<script src="${base}/mrhweb/js/jquery.capSlide.js" type="text/javascript"></script>
+<script id="loginScri">
+	if (localStorage._AUTOLOGIN == "true" && "${user???c}" == "false") {
+		var options = {
+			url : "${base}/login.jspx",
+			contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+			success : window.loginSuccess
+		};
+		eval("options.data = " + localStorage.user);
+		window._postData(options);
+	}
+	$("#loginScri").remove();
+</script>
+<sitemesh:write property='head' />
+<title><sitemesh:write property='title' /></title>
+<link rel="shortcut icon" href="${base}/mrhweb/css/assets/ico/minus.png">
+</head>
+<body>
+	<sitemesh:write property='body' />
+</body>
+</html>

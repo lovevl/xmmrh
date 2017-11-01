@@ -1,0 +1,251 @@
+<!DOCTYPE html> 
+<html>
+<head>
+
+<title>首页</title>
+<!-- SLIDER -->
+<script type="text/javascript" src="${base}/mrhweb/js/jquery.cycle.js"></script>
+<script type="text/javascript">
+	$(window).load(function() {
+		$("#scroller .items").cycle({ 
+    		fx: 'scrollUp' 	
+		});
+	});
+</script>
+
+<!-- SLIDER_TIMELINE -->
+<script type="text/javascript" src="${base}/mrhweb/js/jquery.timeline.min.js"></script>
+<script type="text/javascript">
+$(window).load(function() {
+	// dark
+	$('.timelineLight').timeline({
+		openTriggerClass : '.read_more',
+		startItem : '${startTime}'
+	});
+	refactorImage();
+});
+</script>
+<!-- MENU -->
+<script type="text/javascript" src="${base}/mrhweb/js/jquery.iconmenu.js"></script>
+<!-- SERVICES 
+<script type="text/javascript" src="${base}/mrhweb/js/jquery.quicksand.js"></script>
+-->
+<script type="text/javascript" src="${base}/mrhweb/js/services.js"></script>
+</head>
+
+
+<body>
+
+
+<!-- BEGIN menu -->
+<header class="header_silverbackground">
+	<#include "/WEB-INF/t/cms/www/default/webmm/templateView/headerView.html"/>
+</header>
+<!-- BEGIN TIMELINE -->
+<div class="timelineLight tl">
+	
+	<#if photoList??><#list photoList as pl>
+		
+		<div class="item" data-id="${pl.createTime?substring(0,10)}" data-description="<#if pl.detail?length gt 15>${pl.detail?substring(0,15)}...<#else>${pl.detail}</#if>">
+			<a class="image_rollover_bottom con_borderImage" data-description="djdt" href="/static/a55941df40e3c69b97b0e637751d27c6.jpg" rel="lightbox[timeline]">
+			<img  src="/static/thumba55941df40e3c69b97b0e637751d27c6.jpg" style="height:125px;" alt="" />
+			</a> <!-- file/preview.jspx?fileName=thumb${pl.imgPath} -->
+			<h2>${pl.createTime?substring(5,7)}月, ${pl.createTime?substring(8,10)}</h2>
+			<span><#if pl.detail?length gt 35>${pl.detail?substring(0,35)}...<#else>${pl.detail}</#if>
+			
+			</span>
+			<div class="read_more" data-id="${pl.createTime?substring(0,10)}">查看更多</div>
+		</div>
+		<div class="item_open" data-id="${pl.createTime?substring(0,10)}">
+			<img class="con_borderImage" src="${base}/mrhweb/images/timeline_content/1w.jpg" />
+			<div class="timeline_open_content">
+			<h2 class="no-marg-top">LOREM IPSUM DOLOR</h2>
+			${pl.detail}
+			</div>
+		</div>
+	</#list></#if>	
+	<!--  
+		<div class="item" data-id="2012-06-12" data-description="Lorem ipsum dolor sit amet, consectetur adipiscing elit...">
+			<a class="image_rollover_bottom con_borderImage" data-description="ZOOM IN" href="${base}/mrhweb/images/thumbnails/2a.jpg" rel="lightbox[timeline]">
+			<img src="${base}/mrhweb/images/thumbnails/2.jpg" alt="" />
+			</a>
+			<h2>JUNE, 12</h2>
+			<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc...</span>
+			<div class="read_more" data-id="2012-06-12">Read more</div>
+		</div>
+		<div class="item_open" data-id="2012-06-12">
+			<img class="con_borderImage" src="${base}/mrhweb/images/timeline_content/2w.jpg" />
+			<div class="timeline_open_content">
+			<h2 class="no-marg-top">LOREM IPSUM DOLOR</h2>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <br /><br />
+			
+			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</div>
+		</div>
+	
+
+ <!-- /END TIMELINE -->
+</div>
+<!-- BEGIN middle_silver_background with icons  -->
+<!-- <div class="middle_silver_background">
+		<div class="container">
+			<ul id="sti-menu" class="sti-menu">
+				<li data-hovercolor="#ffffff">
+					<a href="#">
+						<h2 data-type="mText" class="sti-item">Meet our team</h2>
+						<h3 data-type="sText" class="sti-item">Connect designers</h3>
+						<span data-type="icon" class="sti-icon sti-icon-one sti-item"></span>
+					</a>
+				</li>
+				<li data-hovercolor="#ffffff">
+					<a href="#">
+						<h2 data-type="mText" class="sti-item">View our portfolio</h2>
+						<h3 data-type="sText" class="sti-item">Professional work</h3>
+						<span data-type="icon" class="sti-icon sti-icon-two sti-item"></span>
+					</a>
+				</li>
+				<li data-hovercolor="#ffffff">
+					<a href="#">
+						<h2 data-type="mText" class="sti-item">Work with us</h2>
+						<h3 data-type="sText" class="sti-item">You won't regret it</h3>
+						<span data-type="icon" class="sti-icon sti-icon-three sti-item"></span>
+					</a>
+				</li>
+				<li data-hovercolor="#ffffff">
+					<a href="#">
+						<h2 data-type="mText" class="sti-item">Publish your work</h2>
+						<h3 data-type="sText" class="sti-item">Let it roar!</h3>
+						<span data-type="icon" class="sti-icon sti-icon-four sti-item"></span>
+					</a>
+				</li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+</div> -->
+		
+<!-- /END middle_silver_background with icons -->
+
+<!-- BEGIN middle part -->
+<section id="content">
+
+
+<!-- first part -->
+<h3>推荐下载</h3>
+<div class="con_border"></div>
+<#if downList??><#list downList as dl><#if dl_index lt 4>
+<div <#if dl_index==3>class="column column-1-4  marg-top text-center column-last" <#else>class="column column-1-4  marg-top text-center"</#if>>
+	<a class="image_rollover_bottom marg-bott" data-description="ckxq" 
+	<#if dl.type==1>
+	href="${base}/waycd/downloadTypes.jspx?id=${dl.id}">
+	<#else> href="${base}/waycd/download_page.jspx?id=${dl.id}"></#if>
+		<img style="width:222px;height:140px;" src="/static/${(dl.imgPath)!}" alt="" />
+	</a>
+	<b class="colorBlack">${dl.title}</b><br/>
+	<span style="font-size:10px">${dl.purType.name}</span>
+</div>
+</#if></#list></#if>
+
+<!-- <div class="column column-1-4  marg-top text-center">
+	<a class="image_rollover_bottom marg-bott" data-description="ckgd" href="${base}/waycd/downloadTypes.jspx">
+		<img src="${base}/mrhweb/images/home/2.jpg" alt="" />
+	</a>
+	<b class="colorBlack">测试数据</b><br />
+	测试数据测试数据测试数据测试数据测试数据测试数据
+</div>
+
+<div class="column column-1-4  marg-top text-center">
+	<a class="image_rollover_bottom marg-bott" data-description="READ MORE" href="${base}/waycd/downloadTypes.jspx">
+		<img src="${base}/mrhweb/images/home/3.jpg" alt="" />
+	</a>
+	<b class="colorBlack">测试数据测试数据</b><br />
+	测试数据测试数据测试数据测试数据测试数据测试数据测试数据
+</div>
+
+<div class="column column-1-4 column-last  marg-top text-center">
+	<a class="image_rollover_bottom marg-bott" data-description="READ MORE" href="${base}/waycd/downloadTypes.jspx">
+		<img src="${base}/mrhweb/images/home/4.jpg" alt="" />
+	</a>
+	<b class="colorBlack">测试数据</b><br />
+	测试数据测试数据测试数据测试数据测试数据测试数据
+</div>
+ -->
+<!-- /frst part -->
+<div class="clear"></div>
+
+<!-- second part -->
+<h3 class="marg-top40">推荐学习</h3>
+<div class="con_border"></div>
+<div class="column column-1-3  marg-top">
+	<a class="image_rollover_bottom marg-bott" data-description="READ MORE" href="${base}/fromWeb/tutorials.jspx">
+		<img src="${base}/mrhweb/images/home/top1.jpg" alt="" />
+	</a>
+	<div class="blog_content_info con_borderGray">
+		<div class="blog_content_date">9<br /><span>3月</span></div>
+		<a href="${base}/fromWeb/tutorials_post.jspx" class="comment_number">15</a>
+		<div class="clear"></div>
+	</div>
+	<div class="blog_content_excerpt">
+		<div class="padd-bott5 bold colorBlack">我会等你</div>
+		他们为求胜利，不顾一切地发功，不料影响了
+	</div>
+	
+</div>
+
+<div class="column column-1-3  marg-top">
+	<a class="image_rollover_bottom marg-bott" data-description="READ MORE" href="${base}/fromWeb/tutorials.jspx">
+		<img src="${base}/mrhweb/images/home/top2.jpg" alt="" />
+	</a>
+	<div class="blog_content_info con_borderGray">
+		<div class="blog_content_date">9<br /><span>3月</span></div>
+		<a href="${base}/fromWeb/tutorials_post.jspx" class="comment_number">15</a>
+		<div class="clear"></div>
+	</div>
+	
+	<div class="blog_content_excerpt">
+		<div class="padd-bott5 bold colorBlack">地方是的</div>
+		该片讲述的是一场赌坛风云褪色后，另一场充满杀机的恶斗又在酝酿。
+	</div>
+</div>
+<div class="column column-1-3 column-last  marg-top">
+	<a class="image_rollover_bottom marg-bott" data-description="READ MORE" href="${base}/fromWeb/tutorials.jspx">
+		<img src="${base}/mrhweb/images/home/top3.jpg" alt="" />
+	</a>
+	<div class="blog_content_info con_borderGray">
+		<div class="blog_content_date">9<br /><span>3月</span></div>
+		<a href="${base}/fromWeb/tutorials_post.jspx" class="comment_number">15</a>
+		<div class="clear"></div>
+	</div>
+	
+	<div class="blog_content_excerpt">
+		<div class="padd-bott5 bold colorBlack">微风点击</div>
+		方面制造赌圣以分散众人的注意力。另一方面，自从赌圣退隐江湖后，三叔生活潦倒
+	</div>
+</div>
+
+<!-- /second part -->
+
+<div class="clear"></div>
+</section>
+<!-- /END middle part -->
+
+<!-- BEGIN footer -->
+<footer id="footer"> 
+  <#include "/WEB-INF/t/cms/www/default/webmm/templateView/footerView.html"/>
+</footer>
+
+<!-- /END footer -->
+<script type="text/javascript">
+	//alert(document.body.clientWidth);
+	$(function(){
+		if("${(verifyResult)!}"=="true"){
+			alert("购买成功，找到你购买的项目，点击下方的一键下载即可！");
+		}else if("${(verifyResult)!}"=="false"){
+			alert("付款失败！");
+		}
+	});
+	
+</script>
+
+
+</body>
+</html>

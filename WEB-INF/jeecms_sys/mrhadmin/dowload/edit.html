@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>新增下载</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/css/style.css">
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/css/loader-style.css">
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/css/bootstrap.css">
+    
+    <link rel="stylesheet" type="text/css" href="${base}/mrhweb/css/assets/js/tag/jquery.tagsinput.css">
+	<link href="${base}/mrhweb/css/formStyle.css" rel='stylesheet' type='text/css' />
+	<!-- MAIN EFFECT -->
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/preloader.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/app.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/load.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/main.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/tag/jquery.tagsinput.js"></script>
+	
+	<script type="text/javascript" src="${base}/mrhweb/js/commonJs/head.js"></script>
+	<script type="text/javascript" src="${base}/mrhweb/js/commonJs/centerLoader/js/center-loader.min.js"></script>
+	<script src="${base}/mrhweb/js/commonJs/mrh.js"></script>
+	<script src="${base}/mrhweb/js/commonJs/imagePreview.js"></script>
+	<script type="text/javascript" src="${base}/mrhweb/js/commonJs/dict.js"></script>
+    <link rel="shortcut icon" href="${base}/mrhweb/css/assets/ico/minus.png">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <!-- TOP NAVBAR -->
+    <nav role="navigation" class="navbar navbar-static-top">
+        <#include "../templateView/navigation.html"/>
+    </nav>
+
+    <!-- /END OF TOP NAVBAR -->
+
+    <!-- SIDE MENU -->
+    <div id="skin-select">
+        <#include "../templateView/skinSelect.html"/>
+    </div>
+    <!-- END OF SIDE MENU -->
+
+
+
+    <!--  PAPER WRAP -->
+    <div class="wrap-fluid">
+        <div class="container-fluid paper-wrap bevel tlbr">
+
+            <!-- CONTENT -->
+            <!--TITLE -->
+            <div class="row">
+                <div id="paper-top">
+                    <div class="col-sm-3">
+                        <h2 class="tittle-content-header">
+                            <i class="icon-map"></i> 
+                            <span>添加一个新下载
+                            </span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <!--/ TITLE -->
+
+            <!-- BREADCRUMB -->
+            <ul id="breadcrumb">
+                <li>
+                    <span class="entypo-home"></span>
+                </li>
+                <li><i class="fa fa-lg fa-angle-right"></i>
+                </li>
+                <li><a href="#" title="Sample page 1">表单</a>
+                </li>
+                <li><i class="fa fa-lg fa-angle-right"></i>
+                </li>
+                <li><a href="#" title="Sample page 1">新增一个下载</a>
+                </li>
+                <li class="pull-right">
+                    <div class="input-group input-widget">
+                        <input style="border-radius:15px" type="text" placeholder="搜索..." class="form-control">
+                    </div>
+                </li>
+            </ul>
+
+            <!-- END OF BREADCRUMB -->
+
+		 <div class="content-wrap">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="nest" id="validationClose">
+                            <div class="title-alt">
+                            <#if downl??>
+                                <h6>编辑</h6>
+                            <#else>
+                            	<h6>新增</h6>
+                            </#if>    
+                            </div>
+                            <div class="body-nest" id="validation">
+                                <div class="form_center">
+
+           <!--            <div class="tab-content">
+						<div class="tab-pane active" id="horizontal-form">  --> 
+							<form class="form-horizontal" action="${base}/governor/dowload/saveOrUpdate.do" method="post" enctype="multipart/form-data">  
+								<#if downl.id??><input type="hidden" name="id" value="${downl.id}" >  </#if>
+								<#if downl.downTimes??><input type="hidden" name="downTimes" value="${downl.downTimes}" >  </#if>
+								<#if downl.imgPath??><input type="hidden" name="imgPath" value="${downl.imgPath}"></#if>
+								<#if downl.none??&&downl.none==true><input type="hidden" name="none" value="true"></#if>
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">标题：</label>
+									<div class="col-sm-8">
+										<input type="text" name="title" <#if downl.title??> value="${downl.title}" </#if> class="form-control1"  placeholder="标题用于展示">
+									</div>
+									<div class="col-sm-2" style="display:none">
+										<p class="help-block">提示信息</p>
+									</div>
+								</div>
+						<!--  密码框。。。备用	
+								<div class="form-group">
+									<label for="inputPassword" class="col-sm-2 control-label">Password</label>
+									<div class="col-sm-8">
+										<input type="password" class="form-control1" id="inputPassword" placeholder="Password">
+									</div>
+								</div>
+							
+								<div class="form-group">
+									<label for="checkbox" class="col-sm-2 control-label">备用多选(未用)</label>
+									<div class="col-sm-8 ">
+										<div class="checkbox-inline"><label><input type="checkbox"> Unchecked</label></div>
+										<div class="checkbox-inline"><label><input type="checkbox" checked=""> Checked</label></div>
+									</div>
+								</div>-->
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">url路径：</label>
+									<div class="col-sm-8">
+										<input type="text" name="onDiskUrl" <#if downl.onDiskUrl??> value="${downl.onDiskUrl}" </#if>  class="form-control1"  placeholder="百度网盘/360网盘...">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">对应密码：</label>
+									<div class="col-sm-8">
+										<input type="text" name="password" <#if downl.password??> value="${downl.password}" </#if> class="form-control1"  placeholder="分享链接的密码...">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="selector1" class="col-sm-2 control-label">类型：</label>
+									<div class="col-sm-8"><select name="type" class="form-control1">
+										<#list typeList as dl>
+											<#if downl.type??&&dl.value?eval==downl.type>
+												<option value="${(dl.value)!}" selected="selected">${(dl.name)!}</option>
+											<#else>
+												<option value="${(dl.value)!}">${(dl.name)!}</option>
+											</#if>
+										</#list>
+									</select></div>
+								</div>
+								<div class="form-group" id="purTypeId" >
+									<label  class="col-sm-2 control-label">购买类型(与第一路径相同)：</label>
+									<div class="col-sm-8"><select name="purchType" class="form-control1">
+												<option value="-1">请选择类型</option>
+										<#list ptList as pl>
+											<#if downl.purType??&&pl.id==downl.purType.id>
+												<option value="${(pl.id)!}" selected="selected">${(pl.name)!}</option>
+											<#else>
+												<option value="${(pl.id)!}">${(pl.name)!}</option>
+											</#if>
+										</#list>
+									</select></div>
+								</div>
+								
+								<#if pTitleList??>
+									<#list pTitleList as tl>
+										<div class="form-group parentDiv pathClass" data-parentId="<#if tl.parent??>${tl.parent.id}<#else>-1</#if>">
+											<label for="selector1" class="col-sm-2 control-label">第${tl_index+1}路径：</label>
+											<div class="col-sm-8"><select name="parentIds" class="form-control1" onchange="changeChilOPt(this)">
+												<option value="-2">请选择文件夹</option>
+												<option value="${tl.id}" selected="selected">${tl.title}</option>
+											</select></div>
+										</div>
+									</#list>
+								<#else>	
+									<div class="form-group pathClass">
+										<label for="selector1" class="col-sm-2 control-label">第1路径：</label>
+										<div class="col-sm-8"><select name="parentIds" class="form-control1" onchange="changeChilOPt(this)">
+											<option value="-2" selected="selected">请选择文件夹</option>
+											<#list parentList as pl >
+												<option value="${pl.id}">${pl.title}</option>
+											</#list>
+										</select></div>
+									</div>
+								</#if>
+								
+								<div class="form-group">
+									 <label for="selector1" class="col-sm-2 control-label">搜索标题：</label>
+									 <div class="col-sm-8 ">
+					                    <input style="border-radius: 15px;" type="text" placeholder="引用的实体类标题" class="form-control">
+					                 </div>
+								</div>
+								<div class="form-group refferDiv">
+									<label for="selector1" class="col-sm-2 control-label">引用对象：</label>
+									<div class="col-sm-8"><select name="referredId" id="selector3" class="form-control1">
+										<option value="-1">选择相关引用对象</option>
+										<#if rList??><#list rList as rl>
+											<#if downl.referred??&&downl.referred.id==rl.id>
+													<option value="${rl.id}" selected="">${rl.title}</option>
+											<#else>
+													<#if downlR??&&downlR.id==rl.id>
+													<option value="${rl.id}" selected="">${rl.title}</option>
+													<#else>
+													<option value="${rl.id}" >${rl.title}</option>
+													</#if>
+											</#if>
+										</#list></#if>
+									</select></div>
+								</div>
+								<div class="form-group">
+									<label for="txtarea1" class="col-sm-2 control-label">详情描述：</label>
+									<div class="col-sm-8">
+									<textarea name="detail"  cols="50" rows="4" class="form-control1 txtarea1">${(downl.detail)!}</textarea></div>
+								</div>
+								<div class="form-group">
+									<label for="radio" class="col-sm-2 control-label">状态：</label>
+									<div class="col-sm-8" id="radioCheckId">
+										<div class="radio-inline"><label><input type="radio" name="state" value="true"  checked=""> 有效</label></div>
+										<div class="radio-inline"><label><input type="radio" name="state" value="false" <#if downl.state??&&downl.state==false>checked=""</#if>> 无效</label></div>
+									</div>
+								</div>
+								<div class="form-group">
+							        <label for="exampleInputFile" class="col-sm-2 control-label">图片:</label>
+							        <div class="col-sm-8">
+								        <input type="file" name="file" onchange="image.setImagePreview(this,'imgFileId');">
+								        <div id="imgdiv_initial"><img height="120px" src="${base}/file/preview.jspx?fileName=${(downl.imgPath)!}" id="imgFileId"/></div>
+							        </div>
+						      	</div>
+								
+								<div class="well">
+                                        <label>对应标签:(可用于相关展示)</label>
+                                        <input name="tags" id="tags_1" <#if downl.tags??> value="${downl.tags}" </#if> type="hidden" class="form-control tags" >
+                                </div>
+								<div class="form-actions" style="margin:20px 0 0 0;">
+                                       <button type="submit" class="btn btn-primary">提交</button>
+                                       <button type="reset" class="btn">取消</button>
+                                </div>
+							</form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <#include "../templateView/footer.html"/>
+            <!-- / END OF FOOTER -->
+
+        </div>
+    </div>
+
+    
+
+    <script type="text/javascript">
+    //标签插件的初始化
+    $(function() {
+        $('#tags_1').tagsInput({
+            width: 'auto'
+        });
+        o = {
+        	$purType : $("#purTypeId")
+        }
+        
+        window._initDict(["downloadType"]);
+        $("form div.parentDiv").each(function(i,m){
+	    	var parentId = $(m).attr("data-parentId");
+	    	window._postDataJson({
+	    		url : window._BasePath + "/governor/dowload/findchild.json",
+	    		data : {parentId : parentId, type : "1"},
+	    		success : function(data){
+	    			var optList = data.data.list;
+	    			list_Option(optList,$(m));
+	    		}
+		    });
+	    });
+	    initPurType();
+    });
+    
+    initPurType = function(){
+    	var pathOpt = o.$purType.next().find("select").val();
+    	if(pathOpt != -2){
+    		o.$purType.hide();
+    		o.$purType.find("option:eq(0)").attr("selected","selected");
+    	}else{
+    		o.$purType.show();
+    	}
+    }
+    
+    var list_Option = function(o,$m,flag){
+    	if(o != undefined){
+			var $selects = $m.find("select");
+			var currentOpt = $m.find("option:selected").val();   
+			$selects.find("option:gt(0)").remove();
+			for(var i = 0, length = o.length; i < length; i++){
+				var title = o[i].title;
+				if(flag){
+					title = "(" + window._dictEntitys["downloadType"][o[i].type] +")" + title;
+				}
+				var $opt = $("<option value='"+o[i].id+"'>"+title+"</option>");
+				if(currentOpt == o[i].id){
+					$opt.attr("selected","selected");
+				}
+				$selects.append($opt);
+			} 
+    	}
+    }
+    
+    
+    var changeChilOPt = function(select){
+    	var id = $(select).val();
+    	window._postDataJson({
+	    		url : window._BasePath + "/governor/dowload/findchild.json",
+	    		data : {parentId : id,type : "1"},
+	    		success : function(data){
+	    			var optList = data.data.list;
+	    			var $parent = $(select).parents(".form-group");
+	    			var $nextSel = $parent.next().find("select");
+	    			changeRefferedOpt(id,$parent);
+	    			if(optList != undefined){
+		    			if($nextSel.size() > 0){
+		    				list_Option(optList,$parent.next());
+		    			} else {
+		    				create_Div(optList,$parent);
+		    			}
+	    			}else{
+	    				$parent.nextAll("div:not(.refferDiv)").find("option:gt(0)").remove();
+	    			}
+	    			initPurType();
+	    		}
+		    });
+    }
+    
+    var create_Div = function(optList,$parent){
+   		var $cloneDiv = $parent.clone(true);
+   		var str = $cloneDiv.find("label").text();
+   		var index = parseInt(str.substring(1,2));
+   		$cloneDiv.find("label").text("第"+(index+1)+"路径：");
+   		list_Option(optList,$cloneDiv);
+   		$parent.after($cloneDiv);
+    }
+    
+    var changeRefferedOpt = function(id,$p){
+    	var $pn = $p.nextAll("div.refferDiv");
+    	$pn.find("option:gt(0)").remove();
+    	/* var $pathDiv = $p.prev("div.pathClass");
+    	if($pathDiv){
+    		queryId = $pathDiv.find("select").val();
+    		if(id != "-2"){
+    			 window._postDataJson({
+		    		url : window._BasePath + "/governor/dowload/findchild.json",
+		    		data : {parentId : queryId},
+		    		success : function(data){		
+		    			var optList = data.data.list;
+		    			list_Option(optList,$p.nextAll("div.refferDiv"),true);
+		    		}
+	   			 });
+    		}else{
+    			var $prevDiv = $pathDiv.prev("div.pathClass");
+    			if($prevDiv){
+    				id = $prevDiv.find("select").val();
+    				window._postDataJson({
+			    		url : window._BasePath + "/governor/dowload/findchild.json",
+			    		data : {parentId : id},
+			    		success : function(data){		
+			    			var optList = data.data.list;
+			    			list_Option(optList,$p.nextAll("div.refferDiv"),true);
+			    		}
+		   			 });
+    			}
+    		}
+    	} */
+    	
+    	if(id != "-2"){
+    	//debugger;
+   			 //window._queryOptions.options.refPathId =  $p.find("option:selected").val();
+   			 window._postDataJson({
+	    		url : window._BasePath + "/governor/dowload/findchild.json",
+	    		data : {parentId : id},
+	    		success : function(data){		
+	    			var optList = data.data.list;
+	    			list_Option(optList,$p.nextAll("div.refferDiv"),true);
+	    		}
+   			 });
+    	}else{
+    		//添加同级文件夹为被引用对象
+			var $opts = $p.find("option:gt(0)").clone();
+			$opts.each(function(i,m){
+				$(m).text("(文件夹)"+$(m).text());
+			});
+			$pn.find("select").append($opts);
+    	}
+    	
+    }
+    
+    
+    
+    </script>
+
+</body>
+
+</html>

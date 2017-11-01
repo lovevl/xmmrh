@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>新增图片</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <script type="text/javascript" src="${base}/js_lib/jquery/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/css/style.css">
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/css/loader-style.css">
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/css/bootstrap.css">
+    
+    <link rel="stylesheet" type="text/css" href="${base}/mrhweb/css/assets/js/tag/jquery.tagsinput.css">
+	<link href="${base}/mrhweb/css/formStyle.css" rel='stylesheet' type='text/css' />
+	<link rel='stylesheet' href="${base}/res/common/css/imgareaselect-default.css" />
+	<!-- MAIN EFFECT -->
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/preloader.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/app.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/load.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/main.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/tag/jquery.tagsinput.js"></script>
+	
+	<script type="text/javascript" src="${base}/mrhweb/js/commonJs/head.js"></script>
+	<script type="text/javascript" src="${base}/mrhweb/js/commonJs/centerLoader/js/center-loader.min.js"></script>
+	<script src="${base}/mrhweb/js/commonJs/mrh.js"></script>
+	<script src="${base}/mrhweb/js/commonJs/imagePreview.js"></script>
+	<script type="text/javascript" src="${base}/mrhweb/js/commonJs/dict.js"></script>
+	<script type="text/javascript" src="${base}/thirdparty/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="${base}/mrhweb/js/commonJs/imgareaselect.pack.js"></script>
+	<script type="text/javascript" src="${base}/mrhweb/js/admin/pt11.js"></script>
+    <link rel="shortcut icon" href="${base}/mrhweb/css/assets/ico/minus.png">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <!-- TOP NAVBAR -->
+    <nav role="navigation" class="navbar navbar-static-top">
+        <#include "../templateView/navigation.html"/>
+    </nav>
+
+    <!-- /END OF TOP NAVBAR -->
+
+    <!-- SIDE MENU -->
+    <div id="skin-select">
+        <#include "../templateView/skinSelect.html"/>
+    </div>
+    <!-- END OF SIDE MENU -->
+
+
+
+    <!--  PAPER WRAP -->
+    <div class="wrap-fluid">
+        <div class="container-fluid paper-wrap bevel tlbr">
+
+            <!-- CONTENT -->
+            <!--TITLE -->
+            <div class="row">
+                <div id="paper-top">
+                    <div class="col-sm-3">
+                        <h2 class="tittle-content-header">
+                            <i class="icon-map"></i> 
+                            <span>添加新图片
+                            </span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <!--/ TITLE -->
+
+            <!-- BREADCRUMB -->
+            <ul id="breadcrumb">
+                <li>
+                    <span class="entypo-home"></span>
+                </li>
+                <li><i class="fa fa-lg fa-angle-right"></i>
+                </li>
+                <li><a href="#" title="Sample page 1">表单</a>
+                </li>
+                <li><i class="fa fa-lg fa-angle-right"></i>
+                </li>
+                <li><a href="#" title="Sample page 1">新增图片</a>
+                </li>
+                <li class="pull-right">
+                    <div class="input-group input-widget">
+                        <input style="border-radius:15px" type="text" placeholder="搜索..." class="form-control">
+                    </div>
+                </li>
+            </ul>
+
+            <!-- END OF BREADCRUMB -->
+
+		 <div class="content-wrap">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="nest" id="validationClose">
+                            <div class="title-alt">
+                            <#if photo??>
+                                <h6>编辑</h6>
+                            <#else>
+                            	<h6>新增</h6>
+                            </#if>    
+                            </div>
+                            <div class="body-nest" id="validation">
+                                <div class="form_center">
+
+           <!--            <div class="tab-content">
+						<div class="tab-pane active" id="horizontal-form">  --> 
+							<form class="form-horizontal" action="${base}/governor/photos/save.do" method="post" enctype="multipart/form-data">  
+								<#if photo.id??><input type="hidden" name="id" value="${photo.id}" >  </#if>
+								<#if photo.imgPath??><input type="hidden" name="imgPath" value="${photo.imgPath}" >  </#if>
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">标题：</label>
+									<div class="col-sm-8">
+										<input type="text" name="title" <#if photo.title??> value="${photo.title}" </#if> class="form-control1"  placeholder="标题用于展示">
+									</div>
+									<div class="col-sm-2" style="display:none">
+										<p class="help-block">提示信息</p>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">作者：</label>
+									<div class="col-sm-8">
+										<input type="text" name="author" <#if photo.author??> value="${photo.author}" </#if> class="form-control1"  placeholder="作者">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">拍摄时间：</label>
+									<div class="col-sm-8">
+										<input type="text" name="photoTime" onfocus="WdatePicker({skin:'whyGreen'})" <#if photo.photoTime??> value="${photo.photoTime}" </#if> class="form-control1" >
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">引用的链接：</label>
+									<div class="col-sm-8">
+										<input type="text" name="referLinks" <#if photo.referLinks??> value="${photo.referLinks}" </#if> class="form-control1"  placeholder="引用的链接">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="txtarea1" class="col-sm-2 control-label">详情描述：</label>
+									<div class="col-sm-8">
+									<textarea name="detail"  cols="50" rows="4" class="form-control1 txtarea1">${(photo.detail)!}</textarea></div>
+								</div>
+								<div class="form-group fileDiv" >
+							        <label for="exampleInputFile" class="col-sm-2 control-label">图片:</label>
+							        
+						      	</div>
+						      	<div class="form-group fileDiv" style="width:100%">
+							        <input type="file" name="file" onchange="image.setImagePreview(this,'imgInitId',true);">
+							        <div style="width:200px;height:125px;float:right;margin-top:100px;overflow:hidden;">
+									<img style="width:200px;height:125px;" src="" id="imgFileId">
+									</div>
+							        
+							        <div style="height:250px;float:left;">
+							        <img style="height:250px;" src="${base}/file/preview.jspx?filename=${(photo.imgPath)!}" onload="selectionImg(this);" id="imgInitId">
+							        </div>
+								    <input type="hidden" id="imgData" name="imgData">    
+							    </div>
+								<div class="well">
+                                        <label>对应标签:(可用于相关展示或搜索)</label>
+                                        <input name="tags" id="tags_1" <#if photo.tags??> value="${photo.tags}" </#if> type="hidden" class="form-control tags" >
+                                </div>
+								<div class="form-actions" style="margin:20px 0 0 0;">
+                                       <button type="submit" class="btn btn-primary">提交</button>
+                                       <button type="reset" class="btn">取消</button>
+                                </div>
+							</form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <#include "../templateView/footer.html"/>
+            <!-- / END OF FOOTER -->
+
+        </div>
+    </div>
+</body>
+</html>

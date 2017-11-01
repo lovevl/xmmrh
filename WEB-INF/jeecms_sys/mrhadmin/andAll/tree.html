@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>个人中心</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+    <script type="text/javascript" src="${base}/js_lib/jquery/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/css/style.css">
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/css/loader-style.css">
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/js/tree/treetable/stylesheets/jquery.treetable.css">
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/js/tree/treetable/stylesheets/jquery.treetable.theme.default.css">
+	
+	<script type="text/javascript" src="${base}/mrhweb/css/assets/js/preloader.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/app.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/load.js"></script>
+    <script type="text/javascript" src="${base}/mrhweb/css/assets/js/main.js"></script>
+	
+
+    <link rel="shortcut icon" href="${base}/mrhweb/css/assets/ico/minus.png">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+    <!-- TOP NAVBAR -->
+    <nav role="navigation" class="navbar navbar-static-top">
+       <#include "../templateView/navigation.html"/>
+    </nav>
+
+    <!-- /END OF TOP NAVBAR -->
+
+    <!-- SIDE MENU -->
+    <div id="skin-select">
+		<#include "../templateView/skinSelect.html"/>            
+    </div>
+    <!-- END OF SIDE MENU -->
+
+
+
+    <!--  PAPER WRAP -->
+    <div class="wrap-fluid">
+        <div class="container-fluid paper-wrap bevel tlbr">
+
+            <!-- CONTENT -->
+            <!--TITLE -->
+            <div class="row">
+                <div id="paper-top">
+                    <div class="col-sm-3">
+                        <h2 class="tittle-content-header">
+                            <i class="icon-view-list"></i> 
+                            <span>我的收藏
+                            </span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <!--/ TITLE -->
+
+            <div class="content-wrap">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="nest" id="tabletreeClose">
+
+                         
+                        <!--  table-striped   --> 
+			<div class="body-nest" style="margin-top:30px;">
+                  <table class="treetable">
+                      <thead>
+                          <tr>
+                              <th>标题</th>
+                              <th>类型</th>
+                              <th>第一级文件夹标题</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                                <td>
+                                    <span class="file ui-draggable">在很多网站都有应用，尤其是</span>
+                                </td>
+                                <td>File</td>
+                                <td>在很多网站都有应用，尤其是</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="folder ui-draggable">面滚动、幻灯片切换等场景应用比</span>
+                                </td>
+                                <td>Folder</td>
+                                <td>在很多网站都有应用，尤其是</td>
+                            </tr>
+                            
+                            <tr >
+                                <td>
+                                    <span class="folder ui-draggable">，毫秒，其实就是速度，时间越短，运动</span>
+                                </td>
+                                <td>Folder</td>
+                                <td>在很多网站都有应用，尤其是</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    <span class="file ui-draggable">变加速运动、缓冲波动效</span>
+                                </td>
+                                <td>File</td>
+                                <td>在很多网站都有应用，尤其是</td>
+                            </tr>
+                      
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- /END OF CONTENT -->
+
+
+
+            <!-- FOOTER -->
+            <#include "../templateView/footer.html"/>
+            <!-- / END OF FOOTER -->
+
+        </div>
+    </div>
+    <!--  END OF PAPER WRAP -->
+
+
+    <!-- MAIN EFFECT -->
+   
+
+    <script>
+
+   /*  $("#example-advanced").treetable({
+        expandable: true
+    });
+
+    // Highlight selected row
+    $("#example-advanced tbody").on("mousedown", "tr", function() {
+        $(".selected").not(this).removeClass("selected");
+        $(this).toggleClass("selected");
+    });
+
+    // Drag & Drop Example Code
+    $("#example-advanced .file, #example-advanced .folder").draggable({
+        helper: "clone",
+        opacity: .75,
+        refreshPositions: true, // Performance?
+        revert: "invalid",
+        revertDuration: 300,
+        expandable: true,
+        scroll: true
+    });
+
+    $("#example-advanced .folder").each(function() {
+        $(this).parents("#example-advanced tr").droppable({
+            accept: ".file, .folder",
+            drop: function(e, ui) {
+                var droppedEl = ui.draggable.parents("tr");
+                $("#example-advanced").treetable("move", droppedEl.data("ttId"), $(this).data("ttId"));
+            },
+            hoverClass: "accept",
+            over: function(e, ui) {
+                var droppedEl = ui.draggable.parents("tr");
+                if (this != droppedEl[0] && !$(this).is(".expanded")) {
+                    $("#example-advanced").treetable("expandNode", $(this).data("ttId"));
+                }
+            }
+        });
+    }); */
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

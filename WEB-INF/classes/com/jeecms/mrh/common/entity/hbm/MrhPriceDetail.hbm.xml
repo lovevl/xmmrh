@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.jeecms.mrh.common.entity" auto-import="true">
+	<class name="MrhPriceDetail" table="mrh_price_detail" >
+		<id name="id" type="string" column="id">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="type" column="type" type="integer" />
+		<property name="name" column="name" type="string" />
+		<property name="oriPrice" column="ori_price" type="java.math.BigDecimal" />
+		<property name="nowPrice" column="now_price" type="java.math.BigDecimal" />
+	</class>
+</hibernate-mapping>

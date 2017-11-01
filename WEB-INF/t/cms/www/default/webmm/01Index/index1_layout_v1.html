@@ -1,0 +1,111 @@
+<!DOCTYPE html> 
+<html>
+<head>
+
+<title>Downloaded from KickassGFX.net</title>
+<!-- SLIDER -->
+<script type="text/javascript" src="${base}/mrhweb/js/jquery.cycle.js"></script>
+<script type="text/javascript">
+	$(window).load(function() {
+		$("#scroller .items").cycle({ 
+    		fx: 'scrollUp' 	
+		});
+	});
+</script>
+<!-- MENU -->
+<script type="text/javascript" src="${base}/mrhweb/js/jquery.iconmenu.js"></script>
+
+</head>
+<body>
+
+
+<!-- BEGIN menu -->
+<header class="header_silverbackground">
+	<#include "/WEB-INF/t/cms/www/default/webmm/templateView/headerView.html"/>
+</header>
+<!-- /END menu -->
+
+<!-- BEGIN Slider -->
+	<div id="scroller">
+		<div class="items">
+			<a class="item" href="#"><img src="images/Slider/slide-1.jpg" alt="slide-1" /></a>
+			<a class="item" href="#"><img src="images/Slider/slide-2.jpg" alt="slide-2" /></a>
+			<a class="item" href="#"><img src="images/Slider/slide-3.jpg" alt="slide-3" /></a>
+		</div>
+	</div>
+<!-- /END Slider -->
+
+<!-- BEGIN middle_silver_background with icons  -->
+<div class="middle_silver_background">
+		<div class="container">
+			<ul id="sti-menu" class="sti-menu">
+				<li data-hovercolor="#ffffff">
+					<a href="#">
+						<h2 data-type="mText" class="sti-item">Meet our team</h2>
+						<h3 data-type="sText" class="sti-item">Connect designers</h3>
+						<span data-type="icon" class="sti-icon sti-icon-one sti-item"></span>
+					</a>
+				</li>
+				<li data-hovercolor="#ffffff">
+					<a href="#">
+						<h2 data-type="mText" class="sti-item">View our portfolio</h2>
+						<h3 data-type="sText" class="sti-item">Professional work</h3>
+						<span data-type="icon" class="sti-icon sti-icon-two sti-item"></span>
+					</a>
+				</li>
+				<li data-hovercolor="#ffffff">
+					<a href="#">
+						<h2 data-type="mText" class="sti-item">Work with us</h2>
+						<h3 data-type="sText" class="sti-item">You won't regret it</h3>
+						<span data-type="icon" class="sti-icon sti-icon-three sti-item"></span>
+					</a>
+				</li>
+				<li data-hovercolor="#ffffff">
+					<a href="#">
+						<h2 data-type="mText" class="sti-item">Publish your work</h2>
+						<h3 data-type="sText" class="sti-item">Let it roar!</h3>
+						<span data-type="icon" class="sti-icon sti-icon-four sti-item"></span>
+					</a>
+				</li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+</div>
+		
+<!-- /END middle_silver_background with icons -->
+
+<!-- BEGIN middle part -->
+<section id="content">
+
+	<div class="href_path href_path_left">
+		<img class="content_icon" src="images/icons/icon-1.png" alt="icon-1" />
+		<a href="services.html"><h2>WEB DESIGN SERVICES</h2></a>
+		<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at semper risus. Curabitur mattis dapibus quam, tincidunt rutrum sapient porta sit amet.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at semper risus. Curabitur mattis dapibus quam, tincidunt rutrum sapient porta sit amet.</div>
+	</div>
+
+	<div class="href_path href_path_right">
+		<img class="content_icon" src="images/icons/icon-2.png" alt="icon-2" />
+		<a href="services.html"><h2>GRAPHIC DESIGN SERVICES</h2></a>
+		<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at semper risus. Morbi non lacinia augue. Quam, tincidunt rutrum sapien porta sit amet.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at semper risus. Curabitur mattis dapibus quam, tincidunt rutrum sapient porta sit amet.</div>
+	</div>
+
+	<div class="href_path href_no_path_left">
+		<img class="content_icon" src="images/icons/icon-3.png" alt="icon-3" />	
+		<a href="services.html"><h2>SEO SERVICES</h2></a>
+		<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at semper risus.  Curabitur mattis dapibus quam, tincidunt rutrum sapient porta sit amet.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at semper risus. Curabitur mattis dapibus quam, tincidunt rutrum sapient porta sit amet.</div>
+	</div>
+
+<div class="clear"></div>
+</section>
+<!-- /END middle part -->
+
+
+<!-- BEGIN footer -->
+<footer id="footer"> 
+<#include "/WEB-INF/t/cms/www/default/webmm/templateView/footerView.html"/>
+</footer>
+
+<!-- /END footer -->
+
+</body>
+</html>

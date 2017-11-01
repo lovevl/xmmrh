@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh">
+	<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>18禁。jQuery瀑布流加载图片，</title>
+	<!--[if IE]>
+		<script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="${base}/mrhweb/js/imgJs/img.css" />
+	<style type="text/css">
+	.lightboxOverlay{
+		position: fixed;
+		display:block;
+		top: 0;
+		left: 0;
+		z-index: 999;
+		width: 100%;
+		height:100%;
+		background-color: black;
+		opacity:0.7;
+	}
+	.img_box{
+		position: fixed	;
+		width:100%;
+		z-index: 1000;
+		top:0px;
+		left:0px;
+		text-align:center;
+	}
+	.img_inner{
+		padding:15px;
+	}
+	.img_inner img{
+		border-width : 4px 8px;
+		border-style:solid;
+		border-color:#fff;
+		max-height:95%;
+		max-width:90%;
+		height:auto;
+	}
+	
+	</style>
+	</head>
+	<body>
+<div class="jq22-container">
+   <div class="jq22-content bgcolor-3">
+    <div id="div1">
+    <#if imgList??><#list imgList as is>
+          <div class="box"><div onclick="lookingImg(this);"><img src="/img/${is}-img480" alt=""></div></div>
+    </#list>
+    </#if>
+     </div>
+  </div>
+ </div>
+<div class='lightboxOverlay' style="display:none;"></div>
+<div class="img_box">
+	<div class="img_inner" onclick="slowHide(this);"><img alt="" src></div>
+</div>
+<script src="${base}/js_lib/jquery/jquery-2.1.4.min.js"></script> 
+<script src="${base}/mrhweb/js/html/img.js"></script> 
+<script src="${base}/mrhweb/js/imgJs/jquery.waterfall.min.js"></script>
+<script>
+	$("#div1").waterfall({
+	    itemClass: ".box",
+	    minColCount: 2,
+	    spacingHeight: 10,
+	    resizeable: true,
+         isFadeIn:true,
+	    ajaxCallback: function(success, end) {
+	    	$.ajax({
+	    		url : "${base}/scrollImg.json",
+	    		data : JSON.stringify({beginPage : window.beginPage}),
+	    		type : "POST",
+				contentType : "application/json;charset=utf-8",
+	    		success :function(data){
+	    			if(data.result === true){
+	    				window.beginPage++;
+	    				var str = "";
+				        var templ = '<div class="box" style="opacity:0;filter:alpha(opacity=0);"><a class="pic" onclick="lookingImg(this);"><img src="/img/{{src}}-img480" /></a></div>';
+				        for(var i = 0; i < data.data.imgs.length; i++) {
+				            str += templ.replace("{{src}}", data.data.imgs[i]);
+				        }
+				        $(str).appendTo($("#div1"));
+				        success();
+				        end();
+	    			}else{
+	    				var msg = "<div class='none'>没有更多图片了</div>";
+	    				$('.jq22-container').append($(msg));
+	    			}
+	    		}
+	    	});
+	    }
+	});
+	
+	</script>
+</body>
+</html>

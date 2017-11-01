@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.jeecms.mrh.movie.entity" auto-import="true">
+	<class name="MrhMovie" table="mrh_movie" >
+		<id name="id" type="string" column="id">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="name" column="name" type="string" />
+		<property name="url" column="url" type="string" />
+		<property name="profile" column="profile" type="string" />
+		<property name="img" column="img" type="string" />
+		<property name="type" column="type" type="string" />
+		<property name="pubTime" column="pub_time" type="timestamp" />
+		<property name="createTime" column="create_time" type="timestamp" />
+		<property name="tags" column="tags" type="string" />
+		<property name="region" column="region" type="string" />
+		<property name="recommend" column="recommend" type="java.lang.Boolean" />
+		<property name="watchTimes" column="watch_times" type="integer" />
+		<property name="score" column="score" type="java.math.BigDecimal" />
+	</class>
+</hibernate-mapping>

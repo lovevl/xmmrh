@@ -1,0 +1,144 @@
+<script id="loginSc">
+if(!"${(user.username)!}"){
+	alert("请先登录！");
+	window.location.href = window._BasePath + "/login.jspx";
+}
+$("#loginSc").remove();
+</script>
+
+ <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display 让手机端显示更美观-->
+            <div class="navbar-header">
+                <button data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" class="navbar-toggle" type="button">
+                    <span class="entypo-menu"></span>
+                </button>
+                <button class="navbar-toggle toggle-menu-mobile toggle-left" type="button">
+                    <span class="entypo-list-add"></span>
+                </button>
+                <div id="logo-mobile" class="visible-xs">
+                   <h1>个人中心<span></span></h1>
+                </div>
+            </div>
+
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
+               <!--  <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#"><i style="font-size:20px;" class="icon-conversation"></i>
+                        <div class="noft-red">23</div></a>
+                        <ul style="margin: 11px 0 0 9px;" role="menu" class="dropdown-menu dropdown-wrap">
+                            <li>
+                                <a href="#">
+                                    <img alt="" class="img-msg img-circle" src="">Jhon Doe <b>Just Now</b>
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div>See All Messege</div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul> -->
+                
+                <div id="nt-title-container" class="navbar-left running-text visible-lg">
+                    <ul class="date-top">
+                        <li class="entypo-calendar" style="margin-right:5px"></li>
+                        <li id="Date"></li>
+                    </ul>
+
+                    <ul id="digital-clock" class="digital">
+                        <li class="entypo-clock" style="margin-right:5px"></li>
+                        <li class="hour"></li>
+                        <li>:</li>
+                        <li class="min"></li>
+                        <li>:</li>
+                        <li class="sec"></li>
+                        <li class="meridiem"></li>
+                    </ul>
+                </div>
+
+                <ul style="margin-right:0;" class="nav navbar-nav navbar-right">
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <!-- <img alt="" class="admin-pic img-circle" src=""> -->Hi, ${(user.realname!user.username)!} <b class="caret"></b>
+                        </a>
+                        <ul style="margin-top:14px;" role="menu" class="dropdown-setting dropdown-menu">
+                           <!--  <li>
+                                <a href="#">
+                                    <span class="entypo-user"></span>&#160;&#160;My Profile</a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="entypo-vcard"></span>&#160;&#160;Account Setting</a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="entypo-lifebuoy"></span>&#160;&#160;Help</a>
+                            </li>
+                            <li class="divider"></li> -->
+                            <li>
+                                <a href="${base}/logout.jspx">
+                                    <span class="entypo-logout"></span>&#160;&#160;退出登录</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="icon-gear"></span>&#160;&#160;换个背景吧</a>
+                        <ul role="menu" class="dropdown-setting dropdown-menu">
+
+                            <li class="theme-bg">
+                                <div id="button-bg"></div>
+                                <div id="button-bg2"></div>
+                                <div id="button-bg3"></div>
+                                <div id="button-bg4"></div>
+                                <div id="button-bg5"></div>
+                                <div id="button-bg6"></div>
+                                <div id="button-bg7"></div>
+                                <div id="button-bg8"></div>
+                                <div id="button-bg9"></div>
+                                <div id="button-bg10"></div>
+                                <div id="button-bg11"></div>
+                                <div id="button-bg12"></div>
+                                <div><span style="font-size:11px;"> 下次随机更换背景
+                       				</span>
+                       				<label class="switch switch-danger">
+								      <input type="checkbox" class="switch-input" <#if uT??&&uT=="on"> checked="" </#if> onclick="themeOn(this);">
+								      <span class="switch-label" data-on="On" data-off="Off"></span>
+								      <span class="switch-handle"></span>
+								    </label>
+                       				</div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+<script type="text/javascript">
+	window.opts = {
+		theme : null,
+		themeStr : "${(uT)!}"
+	}
+	changeTheme = function(obj){
+	  window.opts.theme = $themes.index(obj);
+	  ajaxPost();
+  	}
+	themeOn = function(obj){
+		if(obj.checked){
+			window.opts.themeStr = "on";
+		}else{
+			window.opts.themeStr = "off";
+		}
+		ajaxPost();
+	}
+	ajaxPost = function(){
+		$.ajax({
+			url : window._BasePath + "/own/themeOn.json",
+			data : {themeStr:window.opts.themeStr,theme:window.opts.theme},
+			type : 'post'
+		});
+	}
+</script>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>个人中心</title>
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/js/tree/treetable/stylesheets/jquery.treetable.css">
+    <link rel="stylesheet" href="${base}/mrhweb/css/assets/js/tree/treetable/stylesheets/jquery.treetable.theme.default.css">
+	<script type="text/javascript" src="${base}/mrhweb/js/commonJs/head.js"></script>
+	<script type="text/javascript" src="${base}/mrhweb/js/commonJs/dict.js"></script>
+	<script type="text/javascript" src="${base}/mrhweb/js/commonJs/mrh.js"></script>
+	<script type="text/javascript" src="${base}/mrhweb/js/commonJs/pageCount.js"></script>
+</head>
+
+<body>
+    <!-- <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div> -->
+    <nav role="navigation" class="navbar navbar-static-top">
+       <#include "../personalTemplate/navigation.html"/>
+    </nav>
+    <div id="skin-select">
+		<#include "../personalTemplate/skinSelect.html"/>            
+    </div>
+
+    <div class="wrap-fluid">
+        <div class="container-fluid paper-wrap bevel tlbr">
+            <div class="row">
+                <div id="paper-top">
+                    <div class="col-sm-3">
+                        <h2 class="tittle-content-header">
+                            <i class="icon-view-list"></i> 
+                            <span>我的收藏
+                            </span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="content-wrap">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="nest" id="tabletreeClose">
+                        <!--  table-striped   --> 
+			<div class="body-nest" style="margin-top:30px;">
+				<div class="row" style="margin-bottom:10px;">
+				<div class="col-sm-6">
+					<span>按</span>
+                    <select style="width:20%" class="filter-status form-control" onchange="window._queryOptions.options.order=this.value;window._queryOptions.query();">
+                        <option value="createTime">收藏时间</option>
+                        <option value="title">标题</option>
+                        <option value="parentTitle">第一级文件夹标题</option>
+                    </select>
+                    <span>排序</span>
+				</div>
+				</div>
+                  <table class="treetable perstable">
+                      <thead>
+                          <tr>
+                              <th>标题</th>
+                              <th>类型</th>
+                              <th>第一级文件夹标题</th>
+                              <th>收藏时间</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                     
+                        </tbody>
+                        <tfoot>
+                             <tr>
+                                 <td>
+                                     <div class="pagination pagination-centered">
+                                     
+                                     </div>
+                                 </td>
+                             </tr>
+                         </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<#include "../personalTemplate/footer.html"/>
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		$theme = $("ul.dropdown-menu div");
+		var theme = ${(theme)!};
+		 $theme.eq(theme).click();
+		window._initDict(["downloadType"]);
+		window._queryOptions = {
+			$tbody : $("table tbody"),
+			options : {
+				order : null,
+				page : {
+					pageNo : 1,
+					length : 10
+				}
+			},
+			query : function(){
+				queryStaff();
+			}	
+		}
+		window._queryOptions.query();
+	});
+
+	queryStaff = function(){
+		window._postDataJson({
+			url : window._BasePath + "/own/listStaff.json",
+			data : window._queryOptions.options,
+			success : function(data){
+				window._queryOptions.options.page = data.data.page;
+				var staffList = data.data.staffList
+				td_trList(staffList);
+				var $pag = $(".pagination");
+	    		$pag.empty().append(createPageCount(window._queryOptions.options.page));
+			}
+		});
+	}
+	
+	td_trList = function(sL){
+		if(sL != undefined){
+			window._queryOptions.$tbody.empty();
+			for(var i =0,length = sL.length;i < length; i++){
+				var cls = "file";
+				if(sL[i].type == 1){
+					cls = "folder";
+				}
+				var $td1 = $("<td><span class='"+cls+" ui-draggable'><a href=\""+window._BasePath+sL[i].queryUrl+sL[i].queryString+"\">"+sL[i].title+"</a></span></td>");
+				var $td2 = $("<td>"+window._dictEntitys["downloadType"][sL[i].type]+"</td>");
+				var $td3 = $("<td>"+sL[i].parentTitle+"</td>");
+				var $td4 = $("<td>"+sL[i].createTime.substring(2,16)+"</td>");
+				var $tr = $("<tr></tr>").append($td1).append($td2).append($td3).append($td4);
+				window._queryOptions.$tbody.append($tr);
+			}
+		}
+	}
+	
+</script>
+
+</body>
+
+</html>

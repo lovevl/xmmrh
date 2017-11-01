@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.jeecms.mrh.movie.entity" auto-import="true">
+	<class name="UserAddEntity" table="mrh_user_add_entity" >
+		<id name="id" type="string" column="id">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="name" column="name" type="string" />
+		<property name="url" column="url" type="string" />
+		<property name="type" column="type" type="string" />
+		<property name="foreignId" column="foreign_id" type="string" />
+		<property name="userUniqueId" column="user_unique_id" type="string" />
+	</class>
+</hibernate-mapping>

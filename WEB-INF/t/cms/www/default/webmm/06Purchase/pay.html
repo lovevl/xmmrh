@@ -1,0 +1,201 @@
+
+<!DOCTYPE html> 
+<html>
+<head>
+<style type="text/css">
+
+</style>
+
+<link href="${base}/mrhweb/css/pricingtable.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="${base}/mrhweb/js/services.js"></script>
+
+<title>购买</title>
+</head>
+<body>
+
+
+<!-- BEGIN menu -->
+<header class="header_silverbackground">
+	<#include "/WEB-INF/t/cms/www/default/webmm/templateView/headerView.html"/>
+</header>
+<!-- /END menu -->
+
+
+<!-- BEGIN middle part -->
+<section id="content">
+	<!-- <div class="href_path_link"><h6>YOU ARE HERE: <a href="icons.html">FEATURES</a>>ELEMENTS</h6></div> -->
+	<!-- <div class="href_path_about"><h2>打勾选择下载的项目</h2></div> -->
+	
+<div class="alert alert-danger" style="margin:2.5em 0 2em 0;">
+	    <strong>本站内容全部免费下载，但若需要一次性下载整个文件夹，您可以选择一项或多项支付后，即可一次性下载该项的全部文件。</strong>
+</div>	
+	
+<form action="${base}/purch/purType.jspx" method="post" onsubmit="if('${(user.username)!}'){this.submit();}else{alert('请先登录');return false;}">
+ <ul class="ourHolder" >
+ <#list typelist as tl>
+ <#if tl.freeOrNo==false>
+	<li class="item pad_right" >
+      <img src="/static/${tl.imgPath}" width="" alt="Design" />
+      <p>${tl.name}<#if tl.payAlone==true>&nbsp;&lt;单&gt;</#if></p>
+      
+      <#if userPurList??>	<#assign value=false>
+      		<#list userPurList as upl>      	
+      			<#if upl.id.pt.type == tl.type>
+      				<#assign value=true>
+      			</#if>
+      		</#list>
+      		<#if value==true>
+      			<#assign value=false>
+      			<label class="btn-pay btn-info active " >
+      			<input type="checkbox" name="types" value="${tl.type}" checked="checked" disabled="true" <#if tl.payAlone==true>pay_alone="1"</#if> >你已拥有此项
+      			 </label>
+      		<#else>
+      			<label class="btn-pay btn-info" >
+      			<input type="checkbox" name="types" value="${tl.type}" onclick="thisCheck();" <#if pt??&&pt==tl.type>checked="checked"</#if> <#if tl.payAlone==true>pay_alone="1"</#if>>选择 </label>
+      		</#if>
+      <#else><label class="btn-pay btn-info" >
+      	<input type="checkbox" name="types" value="${tl.type}" onclick="thisCheck();" <#if pt??&&pt==tl.type>checked="checked"</#if> <#if tl.payAlone==true>pay_alone="1"</#if>>选择</label>
+      </#if>	
+     
+    </li>
+  </#if>
+ </#list>   
+    
+   <!--  
+    <li class="item pad_right" data-id="id-8" data-type="Design">
+      <img src="${base}/mrhweb/images/services/design/2.jpg" width="" alt="Design" />
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at semper risus...</p>
+      <label class="con_button" >
+      <input type="checkbox" name="types">选择
+      </label>
+   </li>
+    
+     -->
+</ul>	
+		<label class="btn-pay btn-info" onclick="checkedAll(this);" style="margin-bottom:10px;">
+		<input type="checkbox" name="all">全选</label>
+	<div class="alert alert-success" id="submitDiv" style="height:20px;">
+	    <span></span>
+	   	<div>
+	   		<button type="submit" class="btn-pay btn-confirm pay-confirm" style="display:none;">确认支付</button>
+	   	</div>
+    </div>
+</form>	
+
+	<div class="clear">
+		<div style="margin-bottom:50px;"></div>
+	</div>
+	
+
+	
+
+	
+	<div class="clear"></div>
+	
+</section>
+<!-- /END middle part -->
+<div class="clear"></div>
+
+
+<!-- BEGIN footer -->
+<footer id="footer"> 
+  <#include "/WEB-INF/t/cms/www/default/webmm/templateView/footerView.html"/>
+</footer>
+
+<!-- /END footer -->
+<script type="text/javascript">
+	$(function(){
+		w = {
+			$submit : $('#submitDiv'),
+			$checkbox : $('li input[type=checkbox]:not(:disabled)')
+		};
+		window._initPurT();
+		window._initPrice();
+	});
+
+	checkedAll = function(obj){
+		var input = obj.firstElementChild;
+		if(input.checked){
+			$(input).removeAttr("checked");
+			w.$checkbox.removeAttr('checked');
+		}else{
+			$(input).attr('checked','checked');
+			w.$checkbox.attr('checked','checked');
+		}
+		thisCheck();
+	}
+		
+	thisCheck = function(){
+		var $checked = $('li input:checked:not(:disabled)');
+		var size = $checked.size();
+		var allSize  = w.$checkbox.size();
+		if(size == 0){
+			w.$submit.find("span").text("");
+			w.$submit.find("button").hide();
+		}else{
+			var oriAPrice = 0.00;
+			var nowAPrice = 0.00;
+			var aloneSize = 0;
+			$checked.each(function(i,m){
+				if($(m).attr("pay_alone")){
+					var type = $(m).val();
+					var purT = window._dictPurT[type];
+					oriAPrice += purT.oriPrice;
+					nowAPrice += purT.nowPrice;
+					aloneSize += 1;
+				}
+			});
+			w.$submit.find("button").show();
+			//debugger;
+			var pri = window._dictPrice["10"+(size-aloneSize)];
+			if(size-aloneSize != 0){
+				oriAPrice = Math.floor((oriAPrice + pri.oriPrice)*100)/100;
+				//nowAPrice = Math.floor((nowAPrice + pri.nowPrice)*100)/100;
+				try {
+					nowAPrice = (nowAPrice + pri.nowPrice).toFixed(2);
+				}catch(e){
+					nowAPrice = Math.floor((nowAPrice + pri.nowPrice)*100)/100;
+				}
+			}
+			w.$submit.find("span").html("你已选择了"+size+"个项目,其中单项目有"+aloneSize+"个，总原价：¥ <strong style='text-decoration:line-through;'>"
+					+oriAPrice+"</strong> 现价：¥ <strong style='color:red'>"+nowAPrice+"</strong>");
+		}
+		if(allSize == size){
+			w.$submit.prev().find("input").attr("checked","checked");
+		}else{
+			w.$submit.prev().find("input").removeAttr("checked");
+		}
+	}	
+	
+	window._initPrice = function(){
+		window._postDataJson({
+			showMessage : false,
+			url : window._BasePath + "/purch/getPrice.json",
+    		data : null,
+    		success : function(data){
+    			$.extend((window._dictPrice = window._dictPrice || {}), data.data);
+    			thisCheck();
+			}
+		});
+	}
+	
+	window._initPurT = function(){
+		window._postDataJson({
+			showMessage : false,
+			url : window._BasePath + "/purch/getPurchase.json",
+    		data : null,
+    		success : function(data){
+    			$.extend((window._dictPurT = window._dictPurT || {}), data.data);
+    			//thisCheck();
+			}
+		});
+	}
+	
+	
+
+</script>
+
+
+
+</body>
+</html>

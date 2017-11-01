@@ -1,0 +1,165 @@
+
+<!DOCTYPE html> 
+<html>
+<head>
+
+<title>Downloaded from KickassGFX.net</title>
+<!-- SLIDER_NIVO --> 
+<script type="text/javascript" src="${base}/mrhweb/js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript">
+    $(window).load(function() {
+        $('.nivo_slider_image').nivoSlider({
+			manualAdvance: true,
+			directionNavHide:false,
+			controlNav:false,
+			prevText: '',
+			nextText: ''
+		});
+    });
+</script>
+<!-- SERVICES 
+<script type="text/javascript" src="${base}/mrhweb/js/jquery.quicksand.js"></script>
+-->
+<script type="text/javascript" src="${base}/mrhweb/js/services.js"></script>
+</head>
+
+<body>
+
+<!-- BEGIN menu -->
+<header class="header_silverbackground">
+	<#include "/WEB-INF/t/cms/www/default/webmm/templateView/headerView.html"/>
+</header>
+<!-- /END menu -->
+
+<!-- BEGIN middle part -->
+<section id="content">
+<div class="href_path_link"><h6>你所在位置: <a href="${base}/waycd/downloadTypes.jspx">资源下载</a>
+	<#if pTitleList??><#list pTitleList as p>
+		><a href="${base}/waycd/downloadTypes.jspx?id=${p.id}"><#if p.title?length gt 8>${p.title?substring(0,8)}...<#else>${p.title}</#if></a>
+	</#list></#if>
+</h6></div>
+<div class="href_path_about"><h2>${(downl.title)!}</h2>
+<img class="" src="${base}/mrhweb/images/end-logo.png" alt="end-logo" /></div>
+
+<!-- first part -->
+<div class="column column-1-3 text-right marg-bott40">
+<div class="res440hide marg-top padd-top1">&nbsp;</div>
+<b class="colorBlack">类型:</b><br />
+<@d_write dictType="downloadType" dictValue="${downl.type}"/><br /><br />
+
+<b class="colorBlack">时间:</b><br />
+${(downl.createTime)!?substring(0,10)}<br /><br />
+
+<#if downl.detail??>
+	<b class="colorBlack">详情:</b><br />
+	${(downl.detail)!}<br /><br />
+<#else>
+	<#if downl.tags??>
+		<b class="colorBlack">标签:</b><br />
+		${(downl.tags)!}<br /><br />
+	</#if>
+</#if>
+
+
+<b class="colorBlack">密码:</b><br />
+<#if downl.password??>${downl.password}<#else>此项需要购买后才能下载</#if><br /><br />
+
+<a class="con_button con_button2 right" href="${base}/waycd/redirectBaiD.jspx?url=${(downl.onDiskUrl)!}&id=${downl.id}" <#if downl.onDiskUrl??>target="_blank"</#if><span class="con_button_text">点击下载</span><span class="con_button_arrow"><span>点击下载</span></span></a>
+
+</div>
+<div class="column column-2-3 column-last marg-bott40">
+		<#if imgDList??>
+		<h3>文件目录结构</h3>
+		<div class="">
+		<div class="nivo_slider_image">
+		<#list imgDList as dl>
+			<img src="/static/${dl.filePath}" alt="目录${dl_index+1}" />
+		</#list>
+		<#else>
+		<h3>无关图片...</h3>
+		<div class="">
+		<div class="nivo_slider_image">
+			<img src="${base}/mrhweb/images/servicespage/1.jpg" alt="" />
+			<img src="${base}/mrhweb/images/servicespage/2.jpg" alt="" />
+			<img src="${base}/mrhweb/images/servicespage/3.jpg" alt="" />
+		</#if>
+		</div>
+	</div>
+</div>
+
+<div class="clear"></div>
+<!-- /first part -->
+
+<!-- second part -->
+<#if downl.mrhDownloads??>
+<h3>相关资料(重要)</h3>
+<div class="con_border"></div>
+<#list downl.mrhDownloads as d>
+<#if (d_index+1)%3!=0>
+<div class="column column-1-3  marg-top">
+	<a class="image_rollover_bottom marg-bott" data-description="ckgd" href="${base}/waycd/download_page.jspx?id=${d.id}">
+		<img src="${base}/mrhweb/images/home/top1.jpg" alt="" />
+	</a>
+	<!-- <div class="padd-bott5 bold colorBlack">Lorem ipsum dolor</div> -->
+	${d.title}
+	<div class="clear padd-bott15"></div>
+	<a class="con_button con_button2" href="${base}/waycd/download_page.jspx?id=${d.id}"><span class="con_button_text">查看更多</span><span class="con_button_arrow"><span>查看更多</span></span></a>
+	<div class="clear"></div>
+</div>
+<#else>
+<div class="column column-1-3 column-last  marg-top">
+	<a class="image_rollover_bottom marg-bott" data-description="ckgd" href="${base}/waycd/download_page.jspx?id=${d.id}">
+		<img src="${base}/mrhweb/images/home/top1.jpg" alt="" />
+	</a>
+	<!-- <div class="padd-bott5 bold colorBlack">Lorem ipsum dolor</div> -->
+	${d.title}
+	<div class="clear padd-bott15"></div>
+	<a class="con_button con_button2" href="${base}/waycd/download_page.jspx?id=${d.id}"><span class="con_button_text">查看更多</span><span class="con_button_arrow"><span>查看更多</span></span></a>
+	<div class="clear"></div>
+</div>
+
+</#if>
+</#list>
+<!--  
+<div class="column column-1-3  marg-top">
+	<a class="image_rollover_bottom marg-bott" data-description="READ MORE" href="${base}/waycd/download_page.jspx">
+		<img src="${base}/mrhweb/images/home/top2.jpg" alt="" />
+	</a>	
+	<div class="padd-bott5 bold colorBlack">Dolor sit amet</div>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at semper risus. Curabitur mattis dapibus quam, tincidunt rutrum sapient porta sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing.
+	<div class="clear padd-bott15"></div>
+	<a class="con_button con_button2" href="${base}/fromWeb/tutorials_post.jspx"><span class="con_button_text">READ MORE</span><span class="con_button_arrow"><span>READ MORE</span></span></a>
+	<div class="clear"></div>
+</div>
+<div class="column column-1-3 column-last  marg-top">
+	<a class="image_rollover_bottom marg-bott" data-description="READ MORE" href="${base}/waycd/download_page.jspx">
+		<img src="${base}/mrhweb/images/home/top3.jpg" alt="" />
+	</a>
+	<div class="padd-bott5 bold colorBlack">Phasellus at semper</div>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at semper risus. Curabitur mattis dapibus quam, tincidunt rutrum sapient porta sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing.
+	<div class="clear padd-bott15"></div>
+	<a class="con_button con_button2" href="${base}/fromWeb/tutorials_post.jspx"><span class="con_button_text">READ MORE</span><span class="con_button_arrow"><span>READ MORE</span></span></a>
+	<div class="clear"></div>
+</div> -->
+</#if>
+<!-- /second part -->
+
+
+   
+<div class="clear"></div>
+
+</section>
+<!-- /END middle part -->
+<div class="clear"></div>
+
+
+
+<!-- BEGIN footer -->
+<footer id="footer"> 
+<#include "/WEB-INF/t/cms/www/default/webmm/templateView/footerView.html"/>
+</footer>
+
+<!-- /END footer -->
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.jeecms.mrh.movie.entity" auto-import="true">
+	<class name="MrhTVCount" table="mrh_tv_count" >
+		<id name="id" type="string" column="id">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="url" column="url" type="string" />
+		<property name="profile" column="profile" type="string" />
+		<property name="episode" column="episode" type="integer" />
+		<many-to-one name="mrhTV" column="tv_id" class="MrhTV" lazy="false" />
+	</class>
+</hibernate-mapping>

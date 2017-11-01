@@ -1,0 +1,270 @@
+.entypo-heart:before {
+	content: "\2665"
+}.entypo-heart-empty:before {
+	content: "\2661"
+}
+
+.perstable > tfoot .pagination {
+  margin: 15px 0 0 15px;
+}
+
+.perstable .pagination.pagination-centered {
+  text-align: right;
+}
+
+.perstable .pagination {
+  margin: 20px 0;
+}
+.perstable .pagination > ul {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background-color: #ffffff;
+}
+.perstable .pagination > ul > li {
+  display: inline;
+}
+.perstable .pagination > ul > li > a,
+.perstable .pagination > ul > li > span {
+  float: left;
+  padding: 4px 12px;
+  line-height: 20px;
+  text-decoration: none;
+  border: 1px solid #cccccc;
+  border-left-width: 0;
+}
+.perstable .pagination > ul > li:first-child > a,
+.perstable .pagination > ul > li:first-child > span {
+  -webkit-border-bottom-left-radius: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  border-bottom-left-radius: 4px;
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  border-top-left-radius: 4px;
+  border-left-width: 1px;
+}
+.perstable .pagination > ul > li:last-child > a,
+.perstable .pagination > ul > li:last-child > span {
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -moz-border-radius-bottomright: 4px;
+  border-bottom-right-radius: 4px;
+}
+.perstable .pagination > ul > li > a:hover,
+.perstable .pagination > ul > li > a:focus,
+.perstable .pagination > ul > .active > a,
+.perstable .pagination > ul > .active > span {
+  background-color: #eeeeee;
+}
+.perstable .pagination > ul > .active > a,
+.perstable .pagination > ul > .active > span {
+  color: #444444;
+  cursor: default;
+}
+.perstable .pagination > ul > .disabled > span,
+.perstable .pagination > ul > .disabled > a,
+.perstable .pagination > ul > .disabled > a:hover,
+.perstable .pagination > ul > .disabled > a:focus {
+  color: #cccccc;
+  cursor: default;
+  background-color: #fff;
+}
+.perstable .pagination.pagination-centered {
+  text-align: right;
+}
+.perstable .pagination.pagination-right {
+  text-align: center;
+}
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+.pagination > li {
+  display: inline;
+}
+.pagination > li > a,
+.pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.428571429;
+  color: #428bca;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  margin-left: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+  color: #2a6496;
+  background-color: #eee;
+  border-color: #ddd;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  z-index: 2;
+  color: #fff;
+  cursor: default;
+  background-color: #428bca;
+  border-color: #428bca;
+}
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+  color: #999;
+  cursor: not-allowed;
+  background-color: #fff;
+  border-color: #ddd;
+}
+.pagination a {
+    color: #555;
+}
+/*  开关按钮 */
+.switch {
+  position: relative;
+  margin: 1px 0 0 3px;
+  display: inline-block;
+  vertical-align: top;
+  width: 40px;
+  height: 18px;
+  background-color: transparent;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  cursor: pointer;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  overflow: hidden;
+}
+.switch-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.switch-label {
+  position: relative;
+  display: block;
+  height: inherit;
+  font-size: 10px;
+  text-transform: uppercase;
+  background: #eeeeee;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.15);
+  -webkit-transition: 0.15s ease-out;
+  -moz-transition: 0.15s ease-out;
+  -o-transition: 0.15s ease-out;
+  transition: 0.15s ease-out;
+  -webkit-transition-property: opacity background;
+  -moz-transition-property: opacity background;
+  -o-transition-property: opacity background;
+  transition-property: opacity background;
+}
+.switch-label:before,
+.switch-label:after {
+  position: absolute;
+  top: 50%;
+  margin-top: -0.4em;
+  line-height: 1;
+  -webkit-transition: inherit;
+  -moz-transition: inherit;
+  -o-transition: inherit;
+  transition: inherit;
+}
+.switch-label:before {
+  content: attr(data-off);
+  right: 1px;
+  color: #d4d4d4;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+}
+.switch-label:after {
+  content: attr(data-on);
+  left: 3px;
+  color: white;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+}
+.switch-input:checked ~ .switch-label {
+  background: #f5f5f5;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
+}
+.switch-input:checked ~ .switch-label:before {
+  opacity: 0;
+}
+.switch-input:checked ~ .switch-label:after {
+  opacity: 1;
+}
+.switch-handle {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 18px;
+  height: 16px;
+  background: white;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  background: #f5f5f5;
+  -webkit-transition: left 0.15s ease-out;
+  -moz-transition: left 0.15s ease-out;
+  -o-transition: left 0.15s ease-out;
+  transition: left 0.15s ease-out;
+}
+.switch-handle:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -8px 0 0 -8px;
+  width: 16px;
+  height: 16px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
+  background: #f5f5f5;
+  border: 1px solid white;
+}
+.switch-input:checked ~ .switch-handle {
+  left: 21px;
+  box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+.switch-danger > .switch-input:checked ~ .switch-label {
+  background: #20a8d8;
+}
+
+
+
+
+

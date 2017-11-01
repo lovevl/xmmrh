@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>登录</title>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+ <!-- Bootstrap Core CSS -->
+<link href="${base}/mrhweb/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="${base}/mrhweb/css/LoginRes.css" rel='stylesheet' type='text/css' />
+<link rel="shortcut icon" href="${base}/mrhweb/css/assets/ico/minus.png">
+</head>
+<body>
+
+  <div class="login-logo">
+     <div class="pro-name"><a href="${base}">XM<span class="name-dot">.</span>MRH</a></div>
+  </div>
+  <h2 class="form-heading">登录网站</h2>
+  <div class="app-cam loginDiv">
+	  <form  method="post" onsubmit="return submitForm(this);">
+		<input type="text" name="username" class="text" placeHolder="手机号码"  >
+		<input type="password" name="password" placeHolder="密码"  >
+		<div><input type="checkbox" style="margin:0 0.5em 1em 0;" onclick="autoLogin(this)">自动登录</div>
+		<div class="submit"><input type="submit" value="登录"></div>
+		
+		<ul class="new">
+			<li class="new_left"><p><a href="#">忘记密码?</a></p></li>
+			<li class="new_right"><p class="sign">新用户?<a href="${base}/i/register.jspx"> 点击注册</a></p></li>
+			<div class="clearfix"></div>
+		</ul>
+	</form>
+  </div>
+   <div class="copy_layout login">
+      <p>Copyright &copy; 2017 91xue.me All rights reserved. Collect from <a href="http://www.91xue.me/" title="网页模板" target="_blank">就要学</a></p>
+   </div>
+<script type="text/javascript">
+	 $(function() {
+		var $form = $("form");
+		/* 配置文件在/r/cms/jquery.js*/
+		$form.find("input[name=username]").attr("vld", "{required:true,phone:true}");
+		$form.find("input[name=password]").attr("vld", "{required:true,rangelength:[6,12]}");
+		$form.validate();
+	}); 
+	window.doSubmitSuccess = window.loginSuccess;
+	autoLogin = function(obj){
+		if(obj.checked){
+			localStorage._AUTOLOGIN = "true";
+		}else{
+			localStorage._AUTOLOGIN = "false";
+		}
+	}
+	
+	submitForm = function(form){
+		form.action = window._BasePath+"/login.jspx"+window.location.search;
+		return ajaxSubmitForm(form, window.doSubmitSuccess);
+	}
+	
+	
+
+
+</script>   
+   
+   
+   
+</body>
+</html>

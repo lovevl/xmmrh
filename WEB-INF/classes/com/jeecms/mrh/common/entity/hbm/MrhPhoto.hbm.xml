@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.jeecms.mrh.common.entity" auto-import="true">
+	<class name="MrhPhoto" table="mrh_photo" >
+		<id name="id" type="string" column="id">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="title" column="title" type="string" />
+		<property name="detail" column="detail" type="string" />
+		<property name="author" column="author" type="string" />
+		<property name="referLinks" column="refer_links" type="string" />
+		<property name="photoTime" column="photo_time" type="timestamp" />
+		<property name="createTime" column="create_time" type="timestamp" />
+		<property name="size" column="size" type="integer" />
+		<property name="imgPath" column="img_path" type="string" />
+		<property name="tags" column="tags" type="string" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.jeecms.mrh.movie.entity" auto-import="true">
+	<class name="MrhTV" table="mrh_tv" >
+		<id name="id" type="string" column="id">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="name" column="name" type="string" />
+		<property name="profile" column="profile" type="string" />
+		<property name="img" column="img" type="string" />
+		<property name="type" column="type" type="string" />
+		<property name="pubTime" column="pub_time" type="timestamp" />
+		<property name="createTime" column="create_time" type="timestamp" />
+		<property name="tags" column="tags" type="string" />
+		<property name="region" column="region" type="string" />
+		<property name="count" column="count" type="integer" />
+		<property name="recommend" column="recommend" type="java.lang.Boolean" />
+		<property name="watchTimes" column="watch_times" type="integer" />
+		<property name="score" column="score" type="java.math.BigDecimal" />
+		<set name="tvCounts" inverse="false" cascade="save-update" sort="com.jeecms.mrh.movie.entity.TVCountsComparator">
+			<key column="tv_id"></key>
+			<one-to-many class="MrhTVCount"></one-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.jeecms.mrh.common.entity" auto-import="true">
+	<class name="MrhTutorialTags" table="mrh_tutorial_tags" >
+		<id name="id" type="integer" column="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="name" column="name" type="string" />
+	</class>
+</hibernate-mapping>

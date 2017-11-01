@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>个人中心</title>
+    <!-- Le styles -->
+</head>
+
+<body>
+   <!--  <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div> -->
+    <nav role="navigation" class="navbar navbar-static-top">
+       <#include "../personalTemplate/navigation.html"/>
+    </nav>
+    <div id="skin-select">
+		<#include "../personalTemplate/skinSelect.html"/>            
+    </div>
+
+    <div class="wrap-fluid">
+        <div class="container-fluid paper-wrap bevel tlbr">
+            <div class="row">
+                <div id="paper-top">
+                    <div class="col-sm-3">
+                        <h2 class="tittle-content-header">
+                            <i class="icon-view-list"></i> 
+                            <span>提出建议或意见
+                            </span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="content-wrap">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="nest" id="tabletreeClose">
+                        <!--  table-striped   --> 
+			<div class="body-nest" style="margin-top:30px;">
+                 <div class="form_center">
+                 <form class="form-horizontal">
+	                 <div class="form-group">
+						<label for="txtarea1" class="col-sm-2 control-label">提出你的建议或意见：</label>
+						<div class="col-sm-8">
+						<textarea name="detail"  cols="50" rows="4" class="form-control1 txtarea1" style="font-size:13px;"></textarea></div>
+					</div>
+					 <div class="form-actions" style="margin:20px 0 0 0;width:100%;">
+	                    <button type="submit" class="btn btn-primary">提交</button>
+	                    <button type="reset" class="btn">取消</button>
+	                 </div>
+                 </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<#include "../personalTemplate/footer.html"/>
+
+</div>
+</div>
+<script type="text/javascript">
+$(function(){
+		var $theme = $("ul.dropdown-menu div");
+		var theme = ${(theme)!};
+		$theme.eq(theme).click();
+});
+</script>
+</body>
+
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html> 
+<html>
+<head>
+
+<title>资源下载</title>
+<!-- SERVICES 
+<script type="text/javascript" src="${base}/mrhweb/js/jquery.quicksand.js"></script>
+-->
+<script type="text/javascript" src="${base}/mrhweb/js/services.js"></script>
+<script type="text/javascript" src="${base}/mrhweb/js/commonJs/pageCountHTML.js"></script>
+<style type="text/css">
+.navbar-form {
+	margin-right: 0px;
+ /*   border-color: #e7e7e7;  */
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+    float: right;
+    margin-top:-32px;
+}
+   
+.navbar-form {
+ /*   padding: 0px 0px;
+    margin-top: 8px;
+    margin-right: 30px;
+    margin-bottom: 10px;
+    margin-left: -15px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 0 rgba(255, 255, 255, .1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 0 rgba(255, 255, 255, .1);  */
+}
+::before, ::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-control {
+    display: inline-block;
+    width: 195px;
+    height: 28px;
+    padding: 0px 0px;
+    font-size: 15px;
+    line-height: 1.42857143;
+ /*   color: #555;
+    background-color: #fff;  */
+    background-image: none;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    vertical-align: middle;
+    padding:1px 10px;
+    opacity:0.8;
+    text-align:center；
+ /*   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;  */
+}
+
+.form-control:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.alert-message {
+padding:1px 4px;
+background-color: rgba(84, 221, 214, 0.88)!important;
+color: #ffffff !important;
+}
+.collect{
+	color:red;
+}
+
+
+</style>
+
+</head>
+
+<body>
+<!-- <div class="body_message" style="width:100%;position:fixed;z-index:999;top:150px;">
+		<div style="margin:0 auto;width:48px;" class="alert alert-message ">
+	    <span style="font-size:12px;">加载完成</span>
+    </div><img style="display:none;" alt="" src="/jeecmsv8/mrhweb/images/loading.gif"></div>
+</div> -->
+
+
+<!-- BEGIN menu -->
+<header class="header_silverbackground">
+	<#include "/WEB-INF/t/cms/www/default/webmm/templateView/headerView.html"/>
+</header>
+<!-- /END menu -->
+
+
+<!-- BEGIN middle part -->
+<section id="content">
+
+
+
+<div id="moje"></div>
+<div class="href_path_link"><h6>你所在的位置:  <a href="${base}/i/index.jspx">资源下载</a>>PHP</h6></div>
+<div class="href_path_about"><h2>所有资源</h2>
+<div class="navbar-form" role="搜索" >
+<div class="form-group" >
+<input type="text" class="form-control" placeholder="搜索本页资源" onkeypress="if(event.keyCode==13||event.which==13)keywordSearch(this);">
+</div>
+</div>
+<!-- <img class="" src="${base}/mrhweb/images/end-logo.png" alt="end-logo" />  -->
+</div>
+	
+    
+ <!-- BEGIN services_container -->
+  <div class="services_container">
+  
+  <ul id="filterOptions">
+ <#if pTitleList??>
+ 	<li><a href="#" onclick="(function(w){w.options.page.pageNo=1;w.options.parentId=null;w.options.keyword=null;w.title=null;w.query();return false;})(window._queryOptions);">资源下载》</a></li>
+ <#list pTitleList as p>
+ 	<li><a href="#" onclick="(function(w){w.options.page.pageNo=1;w.options.parentId='${p.id}';w.title=null;w.query();return false;})(window._queryOptions);">${p.title}》</a></li>
+ </#list>
+ 	<li class="active"><a href="#" onclick="(function(w){w.options.page.pageNo=1;w.options.parentId='${downl.id}';w.title=null;w.query();return false;})(window._queryOptions);">${downl.title}》</a></li>
+ <#else>
+ 	<#if downl??>
+ 	<li><a href="#" onclick="(function(w){w.options.page.pageNo=1;w.options.parentId=null;w.options.keyword=null;w.title=null;w.query();return false;})(window._queryOptions);">资源下载》</a></li>
+ 	<li class="active"><a href="#" onclick="(function(w){w.options.page.pageNo=1;w.options.parentId='${downl.id}';w.title=null;w.query();return false;})(window._queryOptions);">${downl.title}》</a></li>
+ 	<#else>
+ 	<li class="active"><a href="#" onclick="(function(w){w.options.page.pageNo=1;w.options.parentId=null;w.options.keyword=null;w.title=null;w.query();return false;})(window._queryOptions);">资源下载》</a></li>
+ 	</#if>
+ </#if>
+  </ul>
+  <ul class="ourHolder" id="ourHolderId">
+  <!--     
+	<li class="item pad_right" data-id="id-7" data-type="Design">
+      <a class="image_rollover_bottom" data-description="READ MORE" href="${base}/waycd/download_page.jspx"><img src="${base}/mrhweb/images/services/design/1.jpg" width="468" alt="Design" /></a>
+      <h3>DESIGN / BUSINESS  CARDS</h3>     
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at semper risus...</p>
+      <a class="con_button con_button2" href="${base}/waycd/download_page.jspx"><span class="con_button_text">READ MORE</span><span class="con_button_arrow"><span>READ MORE</span></span></a>
+    </li>
+   -->
+  </ul>
+ 
+</div>
+  <!-- /END services_container -->
+   
+   <div style="margin-bottom:30px;" id="pagination"> 
+   <ul class="filterOptionsdown">
+   </ul>
+   </div>
+   
+   
+</section>
+<!--/END middle part -->
+
+
+<!-- BEGIN footer -->
+<footer id="footer"> 
+<#include "/WEB-INF/t/cms/www/default/webmm/templateView/footerView.html"/>
+</footer>
+<!-- /END footer -->
+<script type="text/javascript">
+    $(function() {
+        window._initDict(["downloadType"]);
+        window._queryOptions = {
+	    		options : { 
+	    			isNone : true,
+	    			parentId : (function(s){if(s.indexOf("?")!=-1){ return s.split("=")[1];}else{return null;}})(location.search),
+		    		keyword : null,
+		    		type : null,
+		    		page : {
+		    			pageNo : 1,
+		    			length : 12
+		    		}
+	    		},
+	    		$titleUl : $("#filterOptions"),
+	    		title : null,
+	    		query : function() {
+    				queryDownls();
+    			}
+	    	};
+	    window._queryOptions.query();
+	   
+    });
+    
+	keywordSearch = function (obj){
+			var text = $.trim($(obj).val())
+			if("" != text){
+				window._queryOptions.options.keyword = text;
+				window._queryOptions.title =null;
+				window._queryOptions.options.page.pageNo = 1;
+				window._queryOptions.$titleUl.find("li").eq(0).nextAll().remove();
+				var $div = $("div.href_path_about");
+				$div.find("h2").text("搜索内容：");
+				$("#filterOptions li a:eq(0)").live("click",function(){
+					$(obj).val("");
+					$(obj).attr('placeholder','搜索本页资源');
+					$div.find("h2").text("所有资源");
+				});
+				window._queryOptions.query();
+			}else{
+				$(obj).val("");
+				$(obj).attr('placeholder','搜索本页资源');
+			}
+	}
+	
+	queryDownls = function(){
+			if(window._queryOptions.title != null)
+				createTitle(window._queryOptions.options.parentId,window._queryOptions.title);
+			window._postDataJson({
+	    		url : window._BasePath+"/waycd/findDowl.json",
+	    		data : window._queryOptions.options,
+	    		success : function(data){
+	    			window._queryOptions.options.page = data.data.page;
+	    			window._queryOptions.options.id = null;
+	    			window._queryOptions.title = null;
+	    			var downlList = data.data.list;
+	    			var upList = data.data.upList;
+	    			var collectList = data.data.colList;
+	    			tr_tdList(downlList,upList,collectList);
+	    			var $pag = $(".filterOptionsdown");
+	    			$pag.empty().append(createPageCount(window._queryOptions.options.page));
+	    		}
+    		});	
+	}    
+	
+	tr_tdList = function(d,us,c){
+			var $ul = $('#ourHolderId');
+			$ul.empty();
+			if(d != undefined){
+			(function(w){
+				for(var i = 0 ,length = d.length; i < length; i ++){
+					if(d[i].type == 1&&d[i].none == false){
+						continue;
+					}else{
+						var $a = $("<a href='#' class='image_rollover_bottom' data-description='ckgd'></a>").attr("onclick",
+										"forwardUrl('"+d[i].id+"','"+d[i].type+"','"+d[i].title+"')");
+						var $img = $("<img src='/static/"+d[i].imgPath+"' width='215' height='117'>");
+						$a.append($img);
+						var ic = "<i class='entypo-heart-empty' data_one_id='"+d[i].id+"' onclick=\"window.collectOne('${(user.id)!}',this,'downl')\"></i>";						
+						if(c != undefined){
+							var cId = null;
+							for(var m=0;m<c.length;m++){
+								if(c[m].foreignId==d[i].id){cId=c[m].id;break;}
+							}
+							if(cId != null){
+								ic = "<i class='entypo-heart collect' data_one_id='"+d[i].id+"' data_id='"+cId+"' onclick=\"window.collectOne('${(user.id)!}',this,'downl')\"></i>";
+							}
+						}
+						var $p = $("<p>"+ic+"<span style='color: rgba(255, 34, 14, 0.6);'>【"+window._dictEntitys["downloadType"][d[i].type]+"】</span>"+d[i].title+"</p>");
+						var $a1 = $("<a href='#' class='con_button con_button2'></a>").attr("onclick",
+										"forwardUrl('"+d[i].id+"','"+d[i].type+"','"+d[i].title+"')");
+						var $span1 = $("<span class='con_button_text'>查看更多</span>");
+						var $span2 = $("<span class='con_button_arrow'><span>查看更多</span></span>");
+						$a1.append($span1).append($span2);
+						var $li = $("<li class='item pad_right'></li>").append($a).append($p).append($a1);
+						if(d[i].type == 1){
+							var flag = false;
+							var $lab = $("<a class='btn-pay btn-downl btn-confirm'>一键下载</a>");
+							if(!d[i].purType.freeOrNo){
+								if(us != undefined){
+								for(var j=0;j<us.length;j++){
+									if(d[i].purType.type == us[j].id.pt.type){flag=true;break;}
+								}}
+								if(!flag){
+									$lab.addClass("active");
+								}
+							}
+							$lab.attr("href",window._BasePath + "/waycd/download_page.jspx?id="+d[i].id);
+							$li.append($lab);
+						}
+						$ul.append($li);
+					}
+				}
+				
+				refactorImage();
+				conButtonsInit();
+				dowlTypesBorder();
+				})(window._queryOptions);
+			}
+	}
+	
+	forwardUrl = function(id,type,title){
+		if(type == 1){
+			openFolder(id,title);
+		}else{
+			window.location.href = window._BasePath + "/waycd/download_page.jspx?id="+id;
+		}
+		return false;
+	}
+	
+	openFolder = function(id,title){
+			window._queryOptions.title = title;
+			querys(id);
+	}
+	
+	querys = function(id){
+		(function(w){
+			w.options.keyword = null;
+			w.options.page.pageNo = 1;
+			w.options.parentId = id;
+			w.query();
+		})(window._queryOptions); 
+	}
+	
+	createTitle = function(id,title){
+		var $ul = window._queryOptions.$titleUl;
+		var $last = $ul.find("li:last");
+		var str = $last.find("a").text();
+		if(str.substring(0,str.length-1) != title){
+			$last.removeClass("active");
+			var $li1 = $('<li class="active" onclick="$(this).trigger(\'clickT\')"><a href="#" title="">'+title+'》</a></li>');
+			$li1.unbind("clickT").bind("clickT",function(e){
+				window._queryOptions.title = null;
+				querys(id);
+				$(this).nextAll().remove();
+				return false;
+			});
+			$ul.append($li1);
+		}
+	}
+	
+	
+	
+
+
+</script>
+
+
+</body>
+</html>

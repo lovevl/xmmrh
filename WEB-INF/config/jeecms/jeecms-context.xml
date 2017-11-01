@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="
+http://www.springframework.org/schema/beans  
+http://www.springframework.org/schema/beans/spring-beans-3.2.xsd  
+http://www.springframework.org/schema/context  
+http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+default-lazy-init="true">
+	<bean id="tplMessageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="cacheSeconds" value="0" />
+		<property name="basenames" value="#{propertyUtils.getList('messages.tpl.')}" />
+	</bean>
+	<!--标签 -->
+	<!-- <bean id="cms_pagination" class="com.jeecms.cms.action.directive.PaginationDirective" />
+	<bean id="cms_friendlink_ctg_list" class="com.jeecms.cms.action.directive.CmsFriendlinkCtgListDirective" />
+	<bean id="cms_friendlink_list" class="com.jeecms.cms.action.directive.CmsFriendlinkListDirective" />
+	<bean id="cms_score_group" class="com.jeecms.cms.action.directive.ScoreGroupDirective" /> -->
+	<!--后台权限标签 -->
+	<bean id="cms_perm" class="com.jeecms.cms.web.PermistionDirective" />
+	<!--SERVICE -->
+	<bean id="cmsSiteFlowCache" class="com.jeecms.cms.service.CmsSiteFlowCacheImpl" />
+	<bean id="cmsFriendlinkCtgMng" class="com.jeecms.cms.manager.assist.impl.CmsFriendlinkCtgMngImpl" />
+	<bean id="cmsFriendlinkMng" class="com.jeecms.cms.manager.assist.impl.CmsFriendlinkMngImpl" />
+	<bean id="cmsMysqlDataBackMng" class="com.jeecms.cms.manager.assist.impl.CmsMysqlDataBackMngImpl" />
+	<bean id="cmsSiteAccessMng" class="com.jeecms.cms.manager.assist.impl.CmsSiteAccessMngImpl" />
+	<bean id="cmsSiteAccessPagesMng" class="com.jeecms.cms.manager.assist.impl.CmsSiteAccessPagesMngImpl" />
+	<bean id="cmsSiteAccessStatisticMng" class="com.jeecms.cms.manager.assist.impl.CmsSiteAccessStatisticMngImpl" />
+	<bean id="cmsSiteAccessCountMng" class="com.jeecms.cms.manager.assist.impl.CmsSiteAccessCountMngImpl" />
+	<bean id="cmsScoreGroupMng" class="com.jeecms.cms.manager.assist.impl.CmsScoreGroupMngImpl" />
+	<bean id="cmsScoreItemMng" class="com.jeecms.cms.manager.assist.impl.CmsScoreItemMngImpl" />
+	<bean id="cmsScoreRecordMng" class="com.jeecms.cms.manager.assist.impl.CmsScoreRecordMngImpl" />
+	<bean id="cmsUserAccountMng" class="com.jeecms.core.manager.impl.CmsUserAccountMngImpl" />
+	<bean id="cmsFriendlinkCtgDao" class="com.jeecms.cms.dao.assist.impl.CmsFriendlinkCtgDaoImpl" />
+	<bean id="cmsFriendlinkDao" class="com.jeecms.cms.dao.assist.impl.CmsFriendlinkDaoImpl" />
+	<bean id="cmsMysqlDataDaoBack" class="com.jeecms.cms.dao.assist.impl.CmsMysqlDataBackDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="cmsSqlserverDataDaoBack" class="com.jeecms.cms.dao.assist.impl.CmsSqlserverDataBackDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!-- <bean id="nativeJdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.CommonsDbcpNativeJdbcExtractor" lazy-init="true" />
+	<bean id="oracleLobHandler" class="org.springframework.jdbc.support.lob.OracleLobHandler" lazy-init="true">
+		<property name="nativeJdbcExtractor" ref="nativeJdbcExtractor" />
+	</bean> -->
+	<bean id="defaultLobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler" lazy-init="true" />
+	<!-- <bean id="cmsOracleDataDaoBack" class="com.jeecms.cms.dao.assist.impl.CmsOracleDataBackDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="lobHandler" ref="oracleLobHandler" />
+	</bean> -->
+	<bean id="cmsSiteAccessDao" class="com.jeecms.cms.dao.assist.impl.CmsSiteAccessDaoImpl" />
+	<bean id="cmsSiteAccessPagesDao" class="com.jeecms.cms.dao.assist.impl.CmsSiteAccessPagesDaoImpl" />
+	<bean id="cmsSiteAccessStatisticDao" class="com.jeecms.cms.dao.assist.impl.CmsSiteAccessStatisticDaoImpl" />
+	<bean id="cmsSiteAccessCountDao" class="com.jeecms.cms.dao.assist.impl.CmsSiteAccessCountDaoImpl" />
+	<bean id="cmsScoreGroupDao" class="com.jeecms.cms.dao.assist.impl.CmsScoreGroupDaoImpl" />
+	<bean id="cmsScoreItemDao" class="com.jeecms.cms.dao.assist.impl.CmsScoreItemDaoImpl" />
+	<bean id="cmsScoreRecordDao" class="com.jeecms.cms.dao.assist.impl.CmsScoreRecordDaoImpl" />
+	<bean id="cmsUserAccountDao" class="com.jeecms.core.dao.impl.CmsUserAccountDaoImpl" />
+</beans>

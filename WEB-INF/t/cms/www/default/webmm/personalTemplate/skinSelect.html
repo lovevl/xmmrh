@@ -1,0 +1,101 @@
+ <div id="logo">
+            <h1>个人中心
+                <!-- <span>v1.3</span> -->
+            </h1>
+        </div>
+
+        <a id="toggle">
+            <span class="icon-view-list"></span>
+        </a>
+        <div class="dark">
+            <form action="#">
+                <span>
+                    <input type="text" name="search" value="" class="search rounded id_search" placeholder="搜索..." autofocus="">
+                </span>
+            </form>
+        </div>
+
+        <div class="search-hover">
+            <form id="demo-2">
+                <input type="search" placeholder="搜索..." class="id_search">
+            </form>
+        </div>
+
+        <div class="skin-part">
+            <div id="tree-wrap">
+                <div class="side-bar">
+                    <ul class="topnav menu-left-nest">
+                        <li>
+                            <a style="border-left:0px solid!important;" class="title-menu-left">
+                                <span class="myDesign-kit"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="tooltip-tip" href="../i/index.jspx" title="主页">
+                                <i class="icon-window"></i>
+                                <span>网站主页</span>
+                            </a>
+                        </li>	
+                        <li>
+                            <a class="tooltip-tip " href="../own/personal.jspx?theme=${(theme)!}" >
+                                <i class="entypo-heart-empty"></i>
+                                <span>我的收藏</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="tooltip-tip" href="../own/alterTel.jspx?theme=${(theme)!}" >
+                                <i class="icon-mobile-portrait"></i>
+                                <span>修改登录账号</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="tooltip-tip" href="../own/alterPwd.jspx?theme=${(theme)!}" >
+                                <i class="icon-gear"></i>
+                                <span>修改密码</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="tooltip-tip" href="../own/alterInfo.jspx?theme=${(theme)!}">
+                                <i class="icon-information"></i>
+                                <span>修改基本信息</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="tooltip-tip " href="../own/advice.jspx?theme=${(theme)!}" >
+                                <i class="icon-conversation"></i>
+                                <span>聊聊吧</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="tooltip-tip " href="../own/advice.jspx?theme=${(theme)!}" >
+                                <i class="icon-question"></i>
+                                <span>还需要什么？</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div> 
+ <script type="text/javascript">
+ 
+ $(function(){	
+ 	o = {$a:$(".skin-part ul").children("li").children("a:first-child")}
+ 	var url = window.location.pathname;
+ 	if(url.search(/personal/) >= 0){
+ 		o.$a.eq(2).addClass("active").parent().siblings().children("a:first-child").removeClass("active");
+ 	}else if(url.search(/alterTel/) >= 0){
+ 		o.$a.eq(3).addClass("active").parent().siblings().children("a:first-child").removeClass("active");
+ 	}else if(url.search(/alterPwd/) >= 0){
+ 		o.$a.eq(4).addClass("active").parent().siblings().children("a:first-child").removeClass("active");
+ 	}else if(url.search(/alterInfo/) >= 0){
+ 		o.$a.eq(5).addClass("active").parent().siblings().children("a:first-child").removeClass("active");
+ 	}else if(url.search(/chat/) >= 0){
+ 		o.$a.eq(6).addClass("active").parent().siblings().children("a:first-child").removeClass("active");
+ 	}else if(url.search(/advice/) >= 0){
+ 		o.$a.eq(7).addClass("active").parent().siblings().children("a:first-child").removeClass("active");
+ 	}
+ });	 
+ 	
+ 	
+ </script>       
+        

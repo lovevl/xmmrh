@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+	<!-- 对ajax.dataType:json的请求不处理:begin -->
+	<mime-type>text/html</mime-type>
+	<mime-type>application/vnd.wap.xhtml+xml</mime-type>
+	<mime-type>application/xhtml+xml</mime-type>
+	<!-- 对ajax.dataType:json的请求不处理:end -->
+	<!-- mrhPC -->
+	<mapping>
+		<path>/i/*</path>
+		<path>/fromWeb/*</path>
+		<path>/waycd/*</path>
+		<path>/abouti/*</path>
+		<path>/purch/*</path>
+		<decorator>/decorate/mrhweb_pc.jspx</decorator>
+		<decorator>/decorate/base.jspx</decorator>
+	</mapping>
+	<!--  /mrhPC -->
+	<mapping>
+		<path>/own/*</path>
+		<decorator>/decorate/ownPc.jspx</decorator>
+		<decorator>/decorate/base.jspx</decorator>
+	</mapping>	
+	<!--  mrhadmin  -->
+	<mapping>
+		<path>${backstage}/andall/*</path>
+		<path>${backstage}/forms/*</path>
+		<path>${backstage}/dowload/*</path>
+		<path>${backstage}/tutorial/*</path>
+		<path>${backstage}/photos/*</path>
+		<path>${backstage}/purchT/*</path>
+		<path>${backstage}/priceD/*</path>
+		<path>${backstage}/cmsDict/*</path>
+		<decorator>/decorate/base.jspx</decorator>
+	</mapping>
+	<!--  /mrhadmin  -->
+	<!--  mrh登陆注册  -->
+	<mapping>
+		<path>/login*</path>
+		<path>/register*</path>
+		<path>/i/login.jspx*</path>
+		<path>/i/register.jspx*</path>
+		<decorator>/decorate/base.jspx</decorator>
+		<decorator>/decorate/mrhbasePC.jspx</decorator>
+	</mapping>
+	<!--  /mrh登陆注册  -->
+	
+	<mapping path="/decorate/*" exclue="true" />
+	<!-- <mapping path="/user/alipayapi.jspx*" exclue="true" />
+	<mapping path="/user/return_url.jspx*" exclue="true" />
+	<mapping path="/mobile/weixin/loginapi.jspx*" exclue="true" /> -->
+	<!-- -->
+	
+	
+	<!-- 管理后台不修饰 :begin -->
+	<!-- <mapping path="${backstage}/top.do*" exclue="true" /> -->
+	<!-- <mapping path="${backstage}/left.do*" exclue="true" /> -->
+	<!-- <mapping path="${backstage}/right.do*" exclue="true" /> -->
+	<!-- <mapping path="${backstage}/*main.do" exclue="true" /> -->
+	<mapping path="${backstage}/index.do" exclue="true" />
+	<!-- <mapping path="${backstage}/*main.do*" exclue="true" /> -->
+	<!-- <mapping path="*/*_left.do*" exclue="true" /> -->
+	<mapping path="*/thirdparty/*" exclue="true" />
+	<!-- 管理后台不修饰 :end -->
+	<!-- front.js内调用的url不装饰:begin -->
+	<mapping path="*/content_view.jspx*" exclue="true" />
+	<mapping path="*/flow_statistic.jspx*" exclue="true" />
+	<mapping path="*/content_up.jspx*" exclue="true" />
+	<mapping path="*/content_down.jspx*" exclue="true" />
+	<mapping path="*/content_score_items.jspx*" exclue="true" />
+	<mapping path="*/content_score.jspx*" exclue="true" />
+	<mapping path="*/attachment_url.jspx*" exclue="true" />
+	<mapping path="*/attachment.jspx*" exclue="true" />
+	<mapping path="*/comment_list.jspx*" exclue="true" />
+	<mapping path="*/login_csi.jspx*" exclue="true" />
+	<mapping path="*/member/collect.jspx*" exclue="true" />
+	<mapping path="*/member/collect_exist.jspx*" exclue="true" />
+	<mapping path="*/member/jobapply.jspx*" exclue="true" />
+	<!-- front.js内调用的url不装饰:end -->
+	<!-- 自定义 tag 规则 -->
+	<!-- <content-processor> -->
+	<!-- <tag-rule-bundle class="com.something.CssCompressingBundle" /> -->
+	<!-- <tag-rule-bundle class="com.something.LinkRewritingBundle"/> -->
+	<!-- </content-processor> -->
+</sitemesh>

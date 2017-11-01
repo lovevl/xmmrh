@@ -1,0 +1,40 @@
+
+.demo-container {
+    margin:10px;
+}
+code {
+    background: #ddd;
+    padding:2px 5px;
+}
+.status-metro {
+    border-radius: 3px;
+    color: #FFFFFF;
+    display: inline-block;
+    padding: 2px 5px;
+    font-size: 11px;
+    margin-right:5px;
+    cursor:pointer;
+}
+.status-metro.status-active {
+    background: #86C440;
+}
+.status-metro.status-disabled {
+    background: #999999;
+}
+.status-metro.status-suspended {
+    background: #DF2135;
+}
+.foo-setup li {
+    margin-bottom:30px;
+}
+
+.footable-row-detail-value .status-metro, .footable-row-detail-value .status-suspended {
+	cursor:pointer;
+	margin:0 5px;
+	padding:0 0.5em;
+	font-size:10px;
+}
+.status-metro a {
+	color:#FFFFFF;
+}
+
